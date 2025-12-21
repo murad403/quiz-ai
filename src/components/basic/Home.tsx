@@ -4,7 +4,7 @@ import React from 'react'
 
 const Home = () => {
     return (
-        <div className='md:py-32 py-20 md:space-y-10 space-y-7'>
+        <div className='md:pt-32 pt-20 md:space-y-10 space-y-7'>
             <div className='flex justify-center items-center'>
                 <p className='text-sm py-1 px-5 bg-white/10 rounded-2xl text-green-500 inline-block'>
                     <span>AI-Powered Quiz Platform</span>
@@ -22,7 +22,7 @@ const Home = () => {
                 </Link>
                 <Link
                     href="/sign-up"
-                    className="border border-title rounded-xl py-3 px-6 text-title font-semibold hover:bg-header hover:text-white transition-all duration-200"
+                    className="border border-gray-700/70 rounded-xl py-3 px-6 text-title font-semibold hover:bg-header hover:text-white transition-all duration-200"
                 >
                     Try Sample Quiz
                 </Link>
