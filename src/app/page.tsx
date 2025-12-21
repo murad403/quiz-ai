@@ -1,9 +1,16 @@
-import Image from "next/image";
+import Home from '@/components/basic/Home'
+import Navbar from '@/components/shared/Navbar'
+import React from 'react'
 
-export default function Home() {
+const page = () => {
   return (
-    <div>
-      
+    <div className="container mx-auto px-4 md:px-0">
+      <Navbar></Navbar>
+      <main>
+        <Home></Home>
+      </main>
     </div>
-  );
+  )
 }
+
+export default page
