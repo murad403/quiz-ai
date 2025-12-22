@@ -1,6 +1,7 @@
 import Features from '@/components/basic/Features'
 import Home from '@/components/basic/Home'
 import HowItsWorks from '@/components/basic/HowItsWorks'
+import Pricing from '@/components/basic/Pricing'
 import Testimonials from '@/components/basic/Testimonials'
 import Navbar from '@/components/shared/Navbar'
 import React from 'react'
@@ -14,6 +15,7 @@ const page = () => {
         <Features></Features>
         <HowItsWorks></HowItsWorks>
         <Testimonials></Testimonials>
+        <Pricing></Pricing>
       </main>
     </div>
   )
