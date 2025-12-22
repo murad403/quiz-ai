@@ -11,7 +11,7 @@ const Navbar = () => {
 
     return (
         <nav className="py-4">
-            <div className="flex justify-between items-center  ">
+            <div className="flex justify-between items-center">
                 {/* Logo */}
                 <Link href="/" className="text-2xl md:text-3xl font-bold text-main">
                     Quiz ai
@@ -34,13 +34,13 @@ const Navbar = () => {
                 {/* Desktop Buttons */}
                 <div className="hidden md:flex items-center gap-6">
                     <Link
-                        href="/log-in"
+                        href="/auth/sign-in"
                         className="border border-gray-700/70 rounded-xl py-2 px-6 text-title font-semibold hover:bg-header hover:text-white transition-all duration-200"
                     >
-                        Log in
+                        Sign in
                     </Link>
                     <Link
-                        href="/sign-up"
+                        href="/auth/sign-up"
                         className="bg-header rounded-xl py-2 px-6 font-semibold text-white hover:bg-header/90 transition-all duration-200"
                     >
                         Get started
