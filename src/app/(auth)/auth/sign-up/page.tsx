@@ -1,9 +1,11 @@
-import React from 'react'
+import SignUpForm from './SignUpForm'
+import SignUpProcess from './SignUpProcess'
 
 const SignUp = () => {
   return (
-    <div>
-      sign up
+    <div className="flex w-full flex-col md:flex-row md:gap-0 gap-20">
+      <SignUpForm></SignUpForm>
+      <SignUpProcess></SignUpProcess>
     </div>
   )
 }
