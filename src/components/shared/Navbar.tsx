@@ -11,7 +11,7 @@ const Navbar = () => {
 
     return (
         <nav className="py-4">
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center  ">
                 {/* Logo */}
                 <Link href="/" className="text-2xl md:text-3xl font-bold text-main">
                     Quiz ai

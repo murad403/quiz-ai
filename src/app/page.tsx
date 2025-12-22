@@ -3,21 +3,18 @@ import Home from '@/components/basic/Home'
 import HowItsWorks from '@/components/basic/HowItsWorks'
 import Pricing from '@/components/basic/Pricing'
 import Testimonials from '@/components/basic/Testimonials'
-import Navbar from '@/components/shared/Navbar'
-import React from 'react'
+import Transform from '@/components/basic/Transform'
 
 const page = () => {
   return (
-    <div className="container mx-auto px-4 md:px-0">
-      <Navbar></Navbar>
-      <main className='space-y-32'>
-        <Home></Home>
-        <Features></Features>
-        <HowItsWorks></HowItsWorks>
-        <Testimonials></Testimonials>
-        <Pricing></Pricing>
-      </main>
-    </div>
+    <main className='space-y-32 container mx-auto px-4 md:px-0'>
+      <Home></Home>
+      <Features></Features>
+      <HowItsWorks></HowItsWorks>
+      <Testimonials></Testimonials>
+      <Pricing></Pricing>
+      <Transform></Transform>
+    </main>
   )
 }
 
