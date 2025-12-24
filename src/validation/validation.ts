@@ -19,3 +19,10 @@ export const signUpValidation = z.object({
         .min(1, { message: "Password is required" })
         .min(8, { message: "Must be at least 8 characters" }),
 });
+
+export const resetPasswordValidation = z.object({
+    email: z
+        .string()
+        .min(1, { message: "Email is required" })
+        .email({ message: "Please enter a valid email address" })
+})
