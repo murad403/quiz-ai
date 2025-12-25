@@ -8,7 +8,7 @@ const Testimonials = () => {
             <Heading title='Trusted by Educators Worldwide' description='See what teachers are saying about QuizAI'></Heading>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-4 items-center'>
                 { testimonials.map((testimonial) => (
-                    <div key={testimonial.id} className="bg-white/10 rounded-xl p-4 border border-gray-700/50 space-y-4">
+                    <div key={testimonial.id} className="bg-card rounded-xl p-4 border border-gray-700/50 space-y-4">
                         {/* Stars */}
                         <div className="flex gap-1">
                             {[...Array(testimonial.rating)].map((_, i) => (

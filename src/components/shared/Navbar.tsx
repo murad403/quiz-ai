@@ -35,13 +35,13 @@ const Navbar = () => {
                 <div className="hidden md:flex items-center gap-6">
                     <Link
                         href="/auth/sign-in"
-                        className="border border-gray-700/70 rounded-xl py-2 px-6 text-title font-semibold hover:bg-header hover:text-white transition-all duration-200"
+                        className="border border-gray-700/70 rounded-lg py-2 px-6 text-title font-semibold hover:bg-header hover:text-white transition-all duration-200"
                     >
                         Sign in
                     </Link>
                     <Link
                         href="/auth/sign-up"
-                        className="bg-header rounded-xl py-2 px-6 font-semibold text-white hover:bg-header/90 transition-all duration-200"
+                        className="bg-header rounded-lg py-2 px-6 font-semibold text-white hover:bg-header/90 transition-all duration-200"
                     >
                         Get started
                     </Link>
@@ -83,14 +83,14 @@ const Navbar = () => {
                         <Link
                             href="/log-in"
                             onClick={toggleMenu}
-                            className="border border-header rounded-xl py-3 px-6 text-center text-title font-semibold hover:bg-header hover:text-white transition-all"
+                            className="border border-header rounded-lg py-3 px-6 text-center text-title font-semibold hover:bg-header hover:text-white transition-all"
                         >
                             Log in
                         </Link>
                         <Link
                             href="/sign-up"
                             onClick={toggleMenu}
-                            className="bg-header rounded-xl py-3 px-6 text-center font-semibold text-white hover:bg-header/90 transition-all"
+                            className="bg-header rounded-lg py-3 px-6 text-center font-semibold text-white hover:bg-header/90 transition-all"
                         >
                             Get started
                         </Link>

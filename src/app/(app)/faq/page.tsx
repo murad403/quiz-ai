@@ -5,7 +5,7 @@ import QuestionSupport from './QuestionSupport'
 
 const FAQ = () => {
   return (
-    <div className='space-y-24 mb-24'>
+    <div className='space-y-20 md:mb-24 mb-16'>
       <FAQBanner></FAQBanner>
       <QuestionAndAnswer></QuestionAndAnswer>
       <QuestionSupport></QuestionSupport>

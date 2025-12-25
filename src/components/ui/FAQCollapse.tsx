@@ -28,7 +28,7 @@ const FAQCollapse = ({ title, faqData }: TParams) => {
                     return (
                         <div
                             key={faq.id}
-                            className="border border-gray-700/50 collapse hover:border-header bg-white/10 relative rounded-lg overflow-hidden"
+                            className="border border-gray-700/50 collapse hover:border-header bg-card relative rounded-lg overflow-hidden"
                         >
                             {/* Hidden checkbox for accessibility & peer targeting */}
                             <input

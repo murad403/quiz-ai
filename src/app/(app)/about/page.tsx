@@ -2,7 +2,7 @@ import Heading from "@/components/shared/Heading"
 
 const About = () => {
   return (
-    <div className='container mx-auto md:mt-20 mt-7 mb-32'>
+    <div className='container mx-auto md:mt-16 mt-7 md:mb-24 mb-16'>
       <div className='flex justify-center'>
         <div className='md:w-[65%] w-full space-y-10'>
           <div>
@@ -23,19 +23,19 @@ const About = () => {
           <div>
             <h1 className='text-main md:text-[40px] text-heading font-bold capitalize mb-2'>Our Values</h1>
             <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
-              <div className="bg-white/10 border rounded-xl space-y-1 p-7 border-gray-700/50">
+              <div className="bg-card border rounded-xl space-y-1 p-7 border-gray-700/50">
                 <h2 className='text-main text-subheading font-bold capitalize'>Education First</h2>
                 <p className='text-paragraph text-title'>Every feature is designed with educators and students in mind.</p>
               </div>
-              <div className="bg-white/10 border rounded-xl space-y-1 p-7 border-gray-700/50">
+              <div className="bg-card border rounded-xl space-y-1 p-7 border-gray-700/50">
                 <h2 className='text-main text-subheading font-bold capitalize'>Education First</h2>
                 <p className='text-paragraph text-title'>Every feature is designed with educators and students in mind.</p>
               </div>
-              <div className="bg-white/10 border rounded-xl space-y-1 p-7 border-gray-700/50">
+              <div className="bg-card border rounded-xl space-y-1 p-7 border-gray-700/50">
                 <h2 className='text-main text-subheading font-bold capitalize'>Education First</h2>
                 <p className='text-paragraph text-title'>Every feature is designed with educators and students in mind.</p>
               </div>
-              <div className="bg-white/10 border rounded-xl space-y-1 p-7 border-gray-700/50">
+              <div className="bg-card border rounded-xl space-y-1 p-7 border-gray-700/50">
                 <h2 className='text-main text-subheading font-bold capitalize'>Education First</h2>
                 <p className='text-paragraph text-title'>Every feature is designed with educators and students in mind.</p>
               </div>
