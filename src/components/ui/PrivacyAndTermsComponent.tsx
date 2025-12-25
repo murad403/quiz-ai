@@ -1,10 +1,11 @@
 import { TPrivacy } from '@/lib/privacy'
-import React from 'react'
+import { TTerms } from '@/lib/terms'
 
-const PrivacyPolicyComponent = ({ privacyData }: { privacyData: TPrivacy }) => {
+
+const PrivacyAndTermsComponent = ({ privacyData }: { privacyData: TPrivacy | TTerms}) => {
     return (
         <div className='space-y-3'>
-            <h1 className='text-main md:text-[40px] text-heading font-bold capitalize'>{privacyData?.title}</h1>
+            <h1 className='text-main text-heading font-bold capitalize'>{privacyData?.title}</h1>
             <p className='text-paragraph text-title leading-relaxed'>{privacyData?.description}</p>
             <ul className='space-y-1 pl-5'>
                 {
@@ -18,4 +19,4 @@ const PrivacyPolicyComponent = ({ privacyData }: { privacyData: TPrivacy }) => {
     )
 }
 
-export default PrivacyPolicyComponent
+export default PrivacyAndTermsComponent

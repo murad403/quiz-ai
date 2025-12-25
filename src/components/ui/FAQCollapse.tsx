@@ -17,7 +17,7 @@ const FAQCollapse = ({ title, faqData }: TParams) => {
 
     return (
         <div>
-            <h1 className='text-main md:text-[40px] text-heading font-bold capitalize text-center mb-3'>
+            <h1 className='text-main text-heading font-bold capitalize text-center mb-3'>
                 {title}
             </h1>
             <div className='space-y-4'>

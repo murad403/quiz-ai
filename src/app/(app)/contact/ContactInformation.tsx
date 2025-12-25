@@ -5,8 +5,8 @@ const ContactInformation = () => {
     return (
         <div className='w-full md:w-1/2'>
             <div>
-                <h1 className='text-main md:text-[50px] text-[40px] font-bold'>Get in Touch</h1>
-                <p className='text-title text-subheading'>{`Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.`}</p>
+                <h1 className='text-main text-[40px] font-bold'>Get in Touch</h1>
+                <p className='text-title text-[20px]'>{`Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.`}</p>
             </div>
             <div className='space-y-3 mt-7'>
                 {
