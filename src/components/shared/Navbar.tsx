@@ -1,8 +1,8 @@
-'use client'; 
+'use client';
 import { navLinks, TNavLink } from '@/lib/navlinks';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react'; 
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -18,12 +18,12 @@ const Navbar = () => {
                 </Link>
 
                 {/* Desktop Menu */}
-                <ul className="hidden md:flex gap-8 items-center">
+                <ul className="hidden md:flex gap-5 items-center">
                     {navLinks.map((link: TNavLink) => (
                         <li key={link.id}>
                             <Link
                                 href={link.route}
-                                className="text-title hover:text-header transition-colors duration-200"
+                                className="text-title hover:text-main transition-colors duration-200"
                             >
                                 {link.label}
                             </Link>
@@ -72,8 +72,8 @@ const Navbar = () => {
                         <Link
                             key={link.id}
                             href={link.route}
-                            onClick={toggleMenu} // click করলেই menu বন্ধ হবে
-                            className="text-xl text-title hover:text-header transition-colors"
+                            onClick={toggleMenu} 
+                            className="text-xl text-title hover:text-main transition-colors"
                         >
                             {link.label}
                         </Link>

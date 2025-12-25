@@ -26,3 +26,7 @@ export const resetPasswordValidation = z.object({
         .min(1, { message: "Email is required" })
         .email({ message: "Please enter a valid email address" })
 })
+
+export const verifyEmailValidation = z.object({
+    code: z.string().min(6, "Verification code must be 6 digits").max(6, "Verification code must be 6 digits")
+});

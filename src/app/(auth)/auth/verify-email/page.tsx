@@ -1,21 +1,18 @@
 "use client";
-
+import { verifyEmailValidation } from "@/validation/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import z from "zod";
 
-const verifyEmailValidation = z.object({
-    code: z.string().min(6, "Verification code must be 6 digits").max(6, "Verification code must be 6 digits")
-});
+
 
 type TInputs = z.infer<typeof verifyEmailValidation>
 
 const VerifyEmail = () => {
     const [countdown, setCountdown] = useState(0);
     const [isResendDisabled, setIsResendDisabled] = useState(false);
-
     const { register, handleSubmit, formState: { errors }, } = useForm<TInputs>({
         resolver: zodResolver(verifyEmailValidation)
     })
@@ -35,22 +32,27 @@ const VerifyEmail = () => {
         }
         return () => clearInterval(timer);
     }, [countdown]);
+     const formatTime = (seconds: number) => {
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+
 
     const onSubmit: SubmitHandler<TInputs> = (data) => {
         console.log(data);
     }
 
+
+    
     const handleResendCode = () => {
         console.log("Resend code clicked");
-        setCountdown(60); // 1 minute = 60 seconds
+        setCountdown(60);
         setIsResendDisabled(true);
     }
 
-    const formatTime = (seconds: number) => {
-        const mins = Math.floor(seconds / 60);
-        const secs = seconds % 60;
-        return `${mins}:${secs.toString().padStart(2, '0')}`;
-    }
+   
 
     return (
         <div className="md:w-1/2 w-full space-y-8">
