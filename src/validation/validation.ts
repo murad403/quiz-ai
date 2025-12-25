@@ -30,3 +30,10 @@ export const resetPasswordValidation = z.object({
 export const verifyEmailValidation = z.object({
     code: z.string().min(6, "Verification code must be 6 digits").max(6, "Verification code must be 6 digits")
 });
+
+export const contactValidation = z.object({
+    name: z.string().min(1, "Name is required"),
+    email: z.string().email("Invalid email address"),
+    subject: z.string().min(1, "Subject is required"),
+    message: z.string().min(10, "Message must be at least 10 characters"),
+})

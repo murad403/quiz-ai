@@ -1,5 +1,4 @@
 import Heading from '@/components/shared/Heading'
-import React from 'react'
 
 const QuestionSupport = () => {
   return (
