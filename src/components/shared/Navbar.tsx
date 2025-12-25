@@ -3,14 +3,31 @@ import { navLinks, TNavLink } from '@/lib/navlinks';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const pathname = usePathname();
 
     const toggleMenu = () => setIsOpen(!isOpen);
 
+    // Function to get proper link href
+    const getLinkHref = (route: string) => {
+        // If route starts with #, it's a section link
+        if (route.startsWith('#')) {
+            // If we're on home page, just use the hash
+            if (pathname === '/') {
+                return route;
+            }
+            // If we're on another page, prepend home route
+            return `/${route}`;
+        }
+        // Otherwise return as is
+        return route;
+    };
+
     return (
-        <nav className="py-4">
+        <nav className="py-4 md:px-0 px-4">
             <div className="flex justify-between items-center">
                 {/* Logo */}
                 <Link href="/" className="text-2xl md:text-3xl font-bold text-main">
@@ -22,7 +39,7 @@ const Navbar = () => {
                     {navLinks.map((link: TNavLink) => (
                         <li key={link.id}>
                             <Link
-                                href={link.route}
+                                href={getLinkHref(link.route)}
                                 className="text-title hover:text-main transition-colors duration-200"
                             >
                                 {link.label}
@@ -71,8 +88,8 @@ const Navbar = () => {
                     {navLinks.map((link: TNavLink) => (
                         <Link
                             key={link.id}
-                            href={link.route}
-                            onClick={toggleMenu} 
+                            href={getLinkHref(link.route)}
+                            onClick={toggleMenu}
                             className="text-xl text-title hover:text-main transition-colors"
                         >
                             {link.label}
@@ -81,14 +98,14 @@ const Navbar = () => {
 
                     <div className="border-t border-gray-200 pt-8 mt-4 flex flex-col gap-4">
                         <Link
-                            href="/log-in"
+                            href="/auth/sign-in"
                             onClick={toggleMenu}
                             className="border border-header rounded-lg py-3 px-6 text-center text-title font-semibold hover:bg-header hover:text-white transition-all"
                         >
-                            Log in
+                            Sign in
                         </Link>
                         <Link
-                            href="/sign-up"
+                            href="/auth/sign-up"
                             onClick={toggleMenu}
                             className="bg-header rounded-lg py-3 px-6 text-center font-semibold text-white hover:bg-header/90 transition-all"
                         >

@@ -7,8 +7,10 @@ const FAQ = () => {
   return (
     <div className='space-y-20 md:mb-24 mb-16'>
       <FAQBanner></FAQBanner>
-      <QuestionAndAnswer></QuestionAndAnswer>
-      <QuestionSupport></QuestionSupport>
+      <div className='px-4 md:px-0 space-y-20'>
+        <QuestionAndAnswer></QuestionAndAnswer>
+        <QuestionSupport></QuestionSupport>
+      </div>
     </div>
   )
 }

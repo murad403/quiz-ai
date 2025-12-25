@@ -3,7 +3,7 @@ import { privacyContactUs, privacyDataSecurity, privacyHowWeUse, privacyInformat
 
 const PrivacyPolicy = () => {
   return (
-    <div className='container mx-auto md:my-20 my-16'>
+    <div className='container mx-auto md:my-20 my-16 px-4 md:px-0'>
       <div className='flex justify-center'>
         <div className='md:w-[65%] w-full space-y-7'>
           <div>

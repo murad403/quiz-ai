@@ -4,7 +4,7 @@ import Footer from '../shared/Footer'
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => {
     return (
-        <div className='px-4 md:px-0'>
+        <div className=''>
             <div className='container mx-auto'>
                 <Navbar></Navbar>
             </div>

@@ -2,7 +2,7 @@ import Heading from "@/components/shared/Heading"
 
 const About = () => {
   return (
-    <div className='container mx-auto md:mt-16 mt-7 md:mb-24 mb-16'>
+    <div className='container mx-auto md:mt-16 mt-7 md:mb-24 mb-16 px-4 md:px-0'>
       <div className='flex justify-center'>
         <div className='md:w-[65%] w-full space-y-10'>
           <div>

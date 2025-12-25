@@ -2,7 +2,7 @@ import { Check } from 'lucide-react'
 
 const SignInProcess = () => {
     return (
-        <div className="bg-white/10 md:h-screen p-4 rounded-xl md:rounded-none md:p-0 md:border-l border-gray-700/50 w-full md:w-1/2 flex flex-col justify-center items-center">
+        <div className="bg-card md:h-screen p-4 rounded-xl md:rounded-none md:p-0 md:border-l border-gray-700/50 w-full md:w-1/2 flex flex-col justify-center items-center">
             <div className="w-full md:w-1/2">
                 <div>
                     <p className='text-sm py-1 px-5 bg-white/10 rounded-2xl text-green-500 inline-block'>
