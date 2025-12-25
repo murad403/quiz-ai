@@ -42,6 +42,7 @@ const About = () => {
             </div>
           </div>
 
+          {/* footer banner */}
           <div className='w-full bg-green-500/10 border border-gray-700/70 md:px-32 px-2 md:py-20 py-6 rounded-xl'>
             <Heading title='Join Thousands of Educators' description='Start creating better quizzes today with QuizAI'></Heading>
             <div className='flex justify-center'>
