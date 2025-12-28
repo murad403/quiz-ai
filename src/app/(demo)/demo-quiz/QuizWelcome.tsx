@@ -66,7 +66,7 @@ const QuizWelcome = ({ title, description, totalQuestions, estimatedTime, onStar
 
           <button
             type="submit"
-             className="text-main font-semibold w-full text-center py-3 rounded-lg transition-colors bg-header hover:bg-header/90"
+             className="text-main font-semibold w-full text-center py-2 rounded-lg transition-colors bg-header hover:bg-header/90"
           >
             Start Quiz
           </button>

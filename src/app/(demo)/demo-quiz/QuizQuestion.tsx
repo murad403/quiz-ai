@@ -1,8 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-// components/QuizQuestion.tsx
 "use client";
 import { TQuizQuestion as QuizQuestionType } from "@/types/quiz";
-import { useState, useEffect } from "react";
 
 interface QuizQuestionProps {
   question: QuizQuestionType;
@@ -16,77 +13,61 @@ interface QuizQuestionProps {
   isLastQuestion: boolean;
 }
 
-const QuizQuestion = ({
-  question,
-  currentIndex,
-  totalQuestions,
-  selectedAnswer,
-  onAnswerSelect,
-  onNext,
-  onPrevious,
-  isFirstQuestion,
-  isLastQuestion,
-}: QuizQuestionProps) => {
-  const [localSelected, setLocalSelected] = useState<string | undefined>(selectedAnswer);
-
-  useEffect(() => {
-    setLocalSelected(selectedAnswer);
-  }, [selectedAnswer, question.id]);
+const QuizQuestion = ({ question, currentIndex, totalQuestions, selectedAnswer, onAnswerSelect, onNext, onPrevious, isFirstQuestion, isLastQuestion}: QuizQuestionProps) => {
 
   const handleOptionClick = (option: string) => {
-    setLocalSelected(option);
     onAnswerSelect(option);
   };
 
   const progress = ((currentIndex + 1) / totalQuestions) * 100;
 
   return (
-    <div className="min-h-screen bg-black p-4 md:p-8">
-      <div className="max-w-4xl mx-auto">
+    <div>
+      <div className="w-full space-y-5">
         {/* Progress Section */}
-        <div className="mb-8">
-          <p className="text-neutral-400 text-sm mb-3">
+        <div>
+          <p className="text-title text-small mb-2">
             Question {currentIndex + 1} of {totalQuestions}
           </p>
           <div className="w-full bg-neutral-800 rounded-full h-2">
             <div
-              className="bg-emerald-500 h-2 rounded-full transition-all duration-300"
+              className="bg-header h-2 rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             />
           </div>
         </div>
 
         {/* Question Card */}
-        <div className="bg-neutral-900 rounded-2xl p-6 md:p-10 border border-neutral-800 mb-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">
+        <div className="border border-gray-700/50 bg-card md:p-7 p-4 rounded-xl">
+          <h2 className="text-subheading font-bold text-white md:mb-7 mb-4">
             {question.question}
           </h2>
 
           {/* Options */}
           <div className="space-y-4">
-            {question.options.map((option: any, index: number) => (
+            {question.options.map((option, index) => (
               <button
                 key={index}
                 onClick={() => handleOptionClick(option)}
-                className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
-                  localSelected === option
-                    ? "border-emerald-500 bg-emerald-500/10"
-                    : "border-neutral-700 bg-neutral-800 hover:border-neutral-600"
+                className={`w-full text-left p-2 rounded-lg border transition-all ${
+                  selectedAnswer === option
+                    ? "border-header"
+                    : "border-gray-700/50 hover:bg-green-500"
                 }`}
               >
                 <div className="flex items-center gap-4">
                   <div
-                    className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                      localSelected === option
-                        ? "border-emerald-500"
-                        : "border-neutral-600"
+                    className={`size-4 rounded-full border flex items-center justify-center ${
+                      selectedAnswer === option
+                        ? "border-green-500"
+                        : "border-gray-700/50"
                     }`}
                   >
-                    {localSelected === option && (
-                      <div className="w-3 h-3 rounded-full bg-emerald-500" />
+                    {selectedAnswer === option && (
+                      <div className="size-2 rounded-full bg-green-500" />
                     )}
                   </div>
-                  <span className="text-white text-lg">{option}</span>
+                  <span className="text-white text-paragraph">{option}</span>
                 </div>
               </button>
             ))}
@@ -98,7 +79,7 @@ const QuizQuestion = ({
           <button
             onClick={onPrevious}
             disabled={isFirstQuestion}
-            className={`px-6 py-3 rounded-lg font-medium transition-colors ${
+            className={`px-5 py-2 rounded-lg font-medium transition-colors text-small ${
               isFirstQuestion
                 ? "bg-neutral-800 text-neutral-600 cursor-not-allowed"
                 : "bg-neutral-800 text-white hover:bg-neutral-700"
@@ -109,11 +90,11 @@ const QuizQuestion = ({
 
           <button
             onClick={onNext}
-            disabled={!localSelected}
-            className={`px-8 py-3 rounded-lg font-medium transition-colors ${
-              !localSelected
+            disabled={!selectedAnswer}
+            className={`px-5 py-2 rounded-lg font-medium transition-colors text-small ${
+              !selectedAnswer
                 ? "bg-neutral-800 text-neutral-600 cursor-not-allowed"
-                : "bg-emerald-500 text-black hover:bg-emerald-600"
+                : "text-main rounded-lg transition-colors bg-header hover:bg-header/90"
             }`}
           >
             {isLastQuestion ? "Submit Quiz" : "Next Question"}
@@ -122,6 +103,6 @@ const QuizQuestion = ({
       </div>
     </div>
   );
-}
+};
 
 export default QuizQuestion;
