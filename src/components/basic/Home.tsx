@@ -21,7 +21,7 @@ const Home = () => {
                     Start Creating Free
                 </Link>
                 <Link
-                    href="/sign-up"
+                    href="/demo-quiz"
                     className="border border-gray-700/70 rounded-xl py-3 px-6 text-title font-semibold hover:bg-header hover:text-white transition-all duration-200"
                 >
                     Try Sample Quiz
