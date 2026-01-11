@@ -8,7 +8,6 @@ export const signInValidation = z.object({
 
 export const signUpValidation = z.object({
     name: z.string().min(1, { message: "Name is required" }),
-
     email: z
         .string()
         .min(1, { message: "Email is required" })

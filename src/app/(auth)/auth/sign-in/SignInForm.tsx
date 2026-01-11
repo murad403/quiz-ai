@@ -1,10 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
+import { useSignInMutation } from '@/redux/features/auth/auth.api';
+import { saveToken } from '@/utils/auth';
 import { signInValidation } from '@/validation/validation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Eye, EyeOff } from 'lucide-react';
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import z from 'zod';
 
 type TInputs = z.infer<typeof signInValidation>
@@ -12,10 +16,24 @@ type TInputs = z.infer<typeof signInValidation>
 const SignInForm = () => {
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const { register, handleSubmit, formState: { errors }, } = useForm<TInputs>({
-        resolver: zodResolver(signInValidation)
+        resolver: zodResolver(signInValidation),
+        defaultValues: {
+            email: "joy91740@gmail.com",
+            password: "admin1234"
+        }
     })
-    const onSubmit: SubmitHandler<TInputs> = (data) => {
-        console.log(data)
+    const [signIn, {isLoading}] = useSignInMutation();
+
+    const onSubmit: SubmitHandler<TInputs> = async(data) => {
+        try {
+            const result = await signIn(data).unwrap();
+            await saveToken(result.access, result.refresh);
+            // console.log(result);
+            toast.success("Signed in successfully!");
+        } catch (error: any) {
+            // console.log(error);
+            toast.error("Failed to sign in. Please check your credentials.");
+        }
     }
     return (
         <div className="w-full md:w-1/2 flex flex-col items-center justify-center gap-8">
@@ -74,7 +92,9 @@ const SignInForm = () => {
                     type="submit"
                     className="text-main font-semibold w-full text-center py-2 rounded-lg bg-header hover:bg-header/90"
                 >
-                    Sign In
+                    {
+                        isLoading ? "Signing in..." : "Sign In"
+                    }
                 </button>
             </form>
 

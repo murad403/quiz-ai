@@ -5,9 +5,9 @@ import baseApi from "./api/baseApi";
 
 const store = configureStore({
     reducer: {
-        // your reducers here
         [baseApi.reducerPath]: baseApi.reducer,
-    }
+    },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(baseApi.middleware)
 });
 
 export type RootState = ReturnType<typeof store.getState>;

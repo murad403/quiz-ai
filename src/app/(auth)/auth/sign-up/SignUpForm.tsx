@@ -1,10 +1,12 @@
 "use client"
+import { useSignUpMutation } from '@/redux/features/auth/auth.api';
 import { signUpValidation } from '@/validation/validation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Eye, EyeOff } from 'lucide-react';
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import z from 'zod';
 
 type TInputs = z.infer<typeof signUpValidation>
@@ -14,8 +16,17 @@ const SignUpForm = () => {
     const { register, handleSubmit, formState: { errors }, } = useForm<TInputs>({
         resolver: zodResolver(signUpValidation)
     })
-    const onSubmit: SubmitHandler<TInputs> = (data) => {
-        console.log(data)
+    const [signUp, {isLoading}] = useSignUpMutation();
+
+    const onSubmit: SubmitHandler<TInputs> = async(data) => {
+        try {
+            const result = await signUp(data).unwrap();
+            console.log(result);
+        } catch (error) {
+            console.log(error)
+        }
+        console.log(data);
+        toast.success("Account created successfully!");
     }
     return (
         <div className="w-full md:w-1/2 flex flex-col items-center justify-center gap-8">
@@ -78,7 +89,9 @@ const SignUpForm = () => {
                     type="submit"
                     className="text-main font-semibold w-full text-center py-2 rounded-lg bg-header hover:bg-header/90"
                 >
-                    Create account
+                    {
+                        isLoading ? "Creating..." : "Create account"
+                    }
                 </button>
             </form>
             <p className='text-sm text-center text-title'>
