@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from '../shared/Navbar'
 import Footer from '../shared/Footer'
 
-const Wrapper = ({ children }: { children: React.ReactNode }) => {
+const AppWrapper = ({ children }: { children: React.ReactNode }) => {
     return (
         <div className=''>
             <div className='container mx-auto'>
@@ -14,4 +14,4 @@ const Wrapper = ({ children }: { children: React.ReactNode }) => {
     )
 }
 
-export default Wrapper
+export default AppWrapper

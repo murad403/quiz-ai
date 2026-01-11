@@ -1,12 +1,12 @@
-import Wrapper from '@/components/wrapper/Wrapper'
+import AppWrapper from '@/components/wrapper/AppWrapper'
 import React from 'react'
 
 const layout = ({ children }: { children: React.ReactNode }) => {
     return (
         <div>
-            <Wrapper>
+            <AppWrapper>
                 {children}
-            </Wrapper>
+            </AppWrapper>
         </div>
     )
 }
