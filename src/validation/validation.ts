@@ -43,3 +43,18 @@ export const quizValidation = z.object({
   context: z.string().optional(),
   numberOfQuestions: z.number().min(1, "At least 1 question is required").max(50, "Maximum 50 questions allowed")
 });
+
+export const changePasswordValidation = z.object({
+    currentPassword: z.string().min(6, "Current password must be at least 6 characters"),
+    newPassword: z.string().min(6, "New password must be at least 6 characters"),
+    confirmNewPassword: z.string().min(6, "Confirm password must be at least 6 characters")
+}).refine((data) => data.newPassword === data.confirmNewPassword, {
+    message: "Passwords don't match",
+    path: ["confirmNewPassword"]
+});
+
+export const personalInfoValidation = z.object({
+  fullName: z.string().min(1, "Full name is required"),
+  email: z.string().min(1, "Email is required").email("Please enter a valid email address"),
+  institute: z.string().min(1, "Institute name is required").optional()
+});
