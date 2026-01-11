@@ -37,3 +37,9 @@ export const contactValidation = z.object({
     subject: z.string().min(1, "Subject is required"),
     message: z.string().min(10, "Message must be at least 10 characters"),
 })
+
+export const quizValidation = z.object({
+  topic: z.string().min(1, "Quiz topic is required"),
+  context: z.string().optional(),
+  numberOfQuestions: z.number().min(1, "At least 1 question is required").max(50, "Maximum 50 questions allowed")
+});
