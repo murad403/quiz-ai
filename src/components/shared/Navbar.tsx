@@ -1,14 +1,15 @@
 'use client';
-import { navLinks, TNavLink } from '@/lib/navlinks';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import { navLinks, TNavLink } from '@/lib/navlinks';
+import profile from "../../../public/vercel.svg";
+import Image from 'next/image';
 
-const Navbar = () => {
+const Navbar = ({ isAuth }: { isAuth: boolean }) => {
     const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();
-
     const toggleMenu = () => setIsOpen(!isOpen);
 
     // Function to get proper link href
@@ -49,20 +50,27 @@ const Navbar = () => {
                 </ul>
 
                 {/* Desktop Buttons */}
-                <div className="hidden md:flex items-center gap-6">
-                    <Link
-                        href="/auth/sign-in"
-                        className="border border-gray-700/70 rounded-lg py-2 px-6 text-title font-semibold hover:bg-header hover:text-white transition-all duration-200"
-                    >
-                        Sign in
-                    </Link>
-                    <Link
-                        href="/auth/sign-up"
-                        className="bg-header rounded-lg py-2 px-6 font-semibold text-white hover:bg-header/90 transition-all duration-200"
-                    >
-                        Get started
-                    </Link>
-                </div>
+                {
+                    isAuth ?
+                        <Link href={"/profile"} className="hidden md:block gap-6">
+                            <Image width={500} height={500} src={profile} className='size-12 rounded-full border border-green-500' alt='profile'/>
+                        </Link>
+                        :
+                        <div className="hidden md:flex items-center gap-6">
+                            <Link
+                                href="/auth/sign-in"
+                                className="border border-gray-700/70 rounded-lg py-2 px-6 text-title font-semibold hover:bg-header hover:text-white transition-all duration-200"
+                            >
+                                Sign in
+                            </Link>
+                            <Link
+                                href="/auth/sign-up"
+                                className="bg-header rounded-lg py-2 px-6 font-semibold text-white hover:bg-header/90 transition-all duration-200"
+                            >
+                                Get started
+                            </Link>
+                        </div>
+                }
 
                 {/* Mobile Menu Button */}
                 <button

@@ -1,9 +1,20 @@
 "use client"
+import { clearTokens } from '@/utils/auth';
+import { useRouter } from 'next/navigation';
 import { FiLogOut } from 'react-icons/fi';
+import { toast } from 'react-toastify';
 
 const LogoutModal = () => {
-    const handleLogout = () => {
-        (document.getElementById('my_modal_1') as HTMLDialogElement)?.close();
+    const router = useRouter();
+    const handleLogout = async() => {
+        try {
+            await clearTokens();
+            (document.getElementById('my_modal_1') as HTMLDialogElement)?.close();
+            router.push("/auth/sign-in");
+            toast.success("Logout successfully!");
+        } catch (error) {
+            toast.error("Please try again");
+        }
     };
     return (
         <dialog id="my_modal_1" className="modal modal-bottom sm:modal-middle">

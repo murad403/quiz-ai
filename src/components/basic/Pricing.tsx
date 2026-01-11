@@ -8,7 +8,7 @@ const tags: string[] = ["monthly", "yearly"]
 
 const Pricing = () => {
   const [activeTag, setActiveTag] = useState<string>("monthly");
-  console.log(activeTag);
+  // console.log(activeTag);
   return (
     <div id='pricing' className='md:px-20 px-0'>
       <Heading title='Simple, Transparent Pricing' description='Choose the plan that works best for you'></Heading>

@@ -6,6 +6,7 @@ import { signInValidation } from '@/validation/validation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Eye, EyeOff } from 'lucide-react';
 import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -14,6 +15,7 @@ import z from 'zod';
 type TInputs = z.infer<typeof signInValidation>
 
 const SignInForm = () => {
+    const router = useRouter();
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const { register, handleSubmit, formState: { errors }, } = useForm<TInputs>({
         resolver: zodResolver(signInValidation),
@@ -30,6 +32,7 @@ const SignInForm = () => {
             await saveToken(result.access, result.refresh);
             // console.log(result);
             toast.success("Signed in successfully!");
+            router.push("/");
         } catch (error: any) {
             // console.log(error);
             toast.error("Failed to sign in. Please check your credentials.");
