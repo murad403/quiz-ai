@@ -1,9 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 import { useSignUpMutation } from '@/redux/features/auth/auth.api';
+import { saveToken } from '@/utils/auth';
 import { signUpValidation } from '@/validation/validation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Eye, EyeOff } from 'lucide-react';
 import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -14,19 +17,26 @@ type TInputs = z.infer<typeof signUpValidation>
 const SignUpForm = () => {
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const { register, handleSubmit, formState: { errors }, } = useForm<TInputs>({
-        resolver: zodResolver(signUpValidation)
+        resolver: zodResolver(signUpValidation),
+        defaultValues: {
+            name: "Joy Chondro Debnath",
+            email: "joy917s4fd70@gmail.com",
+            password: "admin1234"
+        }
     })
-    const [signUp, {isLoading}] = useSignUpMutation();
+    const [signUp, { isLoading }] = useSignUpMutation();
+    const router = useRouter();
 
-    const onSubmit: SubmitHandler<TInputs> = async(data) => {
+    const onSubmit: SubmitHandler<TInputs> = async (data) => {
         try {
             const result = await signUp(data).unwrap();
-            console.log(result);
-        } catch (error) {
-            console.log(error)
+            await saveToken(result?.access, result?.refresh);
+            router.push('/');
+            toast.success(result?.message);
+        } catch (error: any) {
+            // console.log(error)
+            toast.error(error?.data?.email?.[0]);
         }
-        console.log(data);
-        toast.success("Account created successfully!");
     }
     return (
         <div className="w-full md:w-1/2 flex flex-col items-center justify-center gap-8">

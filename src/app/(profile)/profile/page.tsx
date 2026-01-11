@@ -3,6 +3,7 @@ import OverviewStats from './dashboard/OverviewStats'
 import RecentQuizzes from './dashboard/RecentQuizzes'
 
 const page = () => {
+    
     return (
         <div className='space-y-4'>
             <PageHeading title='Welcome back, Teacher' paragraph='Create and manage your AI-powered quizzes'></PageHeading>
@@ -12,4 +13,4 @@ const page = () => {
     )
 }
 
-export default page
+export default page;
