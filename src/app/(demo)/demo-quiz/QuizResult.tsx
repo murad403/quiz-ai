@@ -102,7 +102,7 @@ const QuizResult = ({ userName, score, correctAnswers, incorrectAnswers, onRetak
 
 
                 <Link href={"/"} className="md:mt-8 hover:underline underline-offset-2 mt-5 text-green-500 text-small flex justify-center">
-                    Back to home
+                    Back to home 
                 </Link>
             </div>
         </div>

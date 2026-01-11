@@ -1,5 +1,3 @@
-
-import React from 'react'
 import Heading from '../shared/Heading'
 import { features, TFeature } from '@/lib/features'
 
