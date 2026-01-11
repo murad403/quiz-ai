@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 
-const TopPerformingQuizzes = () => {
+const TopPerformingQuizzes = ({quizzes}: {quizzes: any[]}) => {
+  console.log(quizzes)
   return (
     <div className='bg-card border border-gray-700/50 rounded-lg p-4'>
       <h2 className='text-main font-medium text-xl'>Top Performing Quizzes</h2>

@@ -9,8 +9,16 @@ const dashboardApi = baseApi.injectEndpoints({
                     method: 'GET'
                 }
             }
+        }),
+        analytics: builder.query({
+            query: () =>{
+                return {
+                    url: "/teacher/analytics/",
+                    method: "GET"
+                }
+            }
         })
     })
 });
 
-export const {useOverviewQuery} = dashboardApi;
+export const {useOverviewQuery, useAnalyticsQuery} = dashboardApi;
