@@ -29,6 +29,7 @@ const dashboardApi = baseApi.injectEndpoints({
         }),
         updateProfileInfo: builder.mutation({
             query: (data) =>{
+                console.log(data)
                 return {
                     url: "/teacher/settings/",
                     method: "PUT",
@@ -36,8 +37,25 @@ const dashboardApi = baseApi.injectEndpoints({
                 }
             },
             invalidatesTags: ["profile"]
+        }),
+        changePassword: builder.mutation({
+            query: (data) =>{
+                return {
+                    url: '/teacher/settings/change-password/',
+                    method: 'POST',
+                    body: data
+                }
+            }
+        }),
+        deleteUser: builder.mutation({
+            query: () =>{
+                return {
+                    url: "/teacher/delete-account/",
+                    method: "POST"
+                }
+            }
         })
     })
 });
 
-export const {useOverviewQuery, useAnalyticsQuery, useGetProfileInfoQuery, useUpdateProfileInfoMutation} = dashboardApi;
+export const {useOverviewQuery, useAnalyticsQuery, useGetProfileInfoQuery, useUpdateProfileInfoMutation, useChangePasswordMutation, useDeleteUserMutation} = dashboardApi;

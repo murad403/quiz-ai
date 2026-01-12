@@ -2,7 +2,6 @@
 import { useGetProfileInfoQuery, useUpdateProfileInfoMutation } from '@/redux/features/dashboard/dashboard.api'
 import { personalInfoValidation } from '@/validation/validation'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import z from 'zod'
@@ -10,10 +9,8 @@ import z from 'zod'
 type TInputs = z.infer<typeof personalInfoValidation>
 
 const PersonalInformation = () => {
-    // console.log(data);
     const [updateProfileInfo, { isLoading }] = useUpdateProfileInfoMutation();
     const { data } = useGetProfileInfoQuery(undefined);
-    console.log(data)
 
     const { register, handleSubmit, formState: { errors } } = useForm<TInputs>({
         resolver: zodResolver(personalInfoValidation)
@@ -21,9 +18,7 @@ const PersonalInformation = () => {
 
     const onSubmit: SubmitHandler<TInputs> = async (formData) => {
         try {
-            console.log(formData)
             const result = await updateProfileInfo(formData).unwrap();
-            console.log(result)
             toast.success(result.message || "Profile information updated successfully.");
         } catch (error) {
             toast.error("Failed to update profile information.");
@@ -44,10 +39,10 @@ const PersonalInformation = () => {
                     </label>
                     <input
                         className="w-full appearance-none px-4 py-2 border border-gray-700/70 rounded-lg focus:outline-2 outline-header text-title"
-                        {...register("fullName")}
-                        
+                        {...register("name")}
+                        defaultValue={data?.name}
                     />
-                    {errors.fullName && <p className="text-red-500 text-sm mt-2">{errors.fullName.message}</p>}
+                    {errors.name && <p className="text-red-500 text-sm mt-2">{errors.name.message}</p>}
                 </div>
 
                 {/* Email Field */}
@@ -58,7 +53,7 @@ const PersonalInformation = () => {
                     <input
                         className="w-full appearance-none px-4 py-2 border border-gray-700/70 rounded-lg focus:outline-2 outline-header text-title"
                         {...register("email")}
-                        
+                        defaultValue={data?.email}
                     />
                     {errors.email && <p className="text-red-500 text-sm mt-2">{errors.email.message}</p>}
                 </div>
@@ -71,7 +66,7 @@ const PersonalInformation = () => {
                     <input
                         className="w-full appearance-none px-4 py-2 border border-gray-700/70 rounded-lg focus:outline-2 outline-header text-title"
                         {...register("institute")}
-                        
+                        defaultValue={data?.institute}
                     />
                     {errors.institute && <p className="text-red-500 text-sm mt-2">{errors.institute.message}</p>}
                 </div>

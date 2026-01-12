@@ -1,16 +1,30 @@
 "use client"
+import { useDeleteUserMutation } from '@/redux/features/dashboard/dashboard.api';
+import { clearTokens } from '@/utils/auth';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const DeleteAccount = () => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [deleteUser, { isLoading }] = useDeleteUserMutation();
+  const router = useRouter();
 
   const handleDeleteAccount = () => {
     setShowConfirmModal(true);
   };
 
-  const confirmDelete = () => {
-    console.log("Account deleted");
-    setShowConfirmModal(false);
+  const confirmDelete = async () => {
+    try {
+      await deleteUser(undefined).unwrap();
+      setShowConfirmModal(false);
+      toast.success("Account deleted successfully.");
+      await clearTokens();
+      router.push('/');
+    } catch (error) {
+      // console.error("Failed to delete account:", error);
+      toast.error("Failed to delete account. Please try again later.");
+    }
   };
 
   return (
