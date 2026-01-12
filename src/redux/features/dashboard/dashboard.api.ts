@@ -18,8 +18,26 @@ const dashboardApi = baseApi.injectEndpoints({
                 }
             }
         }),
-        
+        getProfileInfo: builder.query({
+            query: () =>{
+                return {
+                    url: "/teacher/settings/",
+                    method: "GET"
+                }
+            },
+            providesTags: ["profile"]
+        }),
+        updateProfileInfo: builder.mutation({
+            query: (data) =>{
+                return {
+                    url: "/teacher/settings/",
+                    method: "PUT",
+                    body: data
+                }
+            },
+            invalidatesTags: ["profile"]
+        })
     })
 });
 
-export const {useOverviewQuery, useAnalyticsQuery} = dashboardApi;
+export const {useOverviewQuery, useAnalyticsQuery, useGetProfileInfoQuery, useUpdateProfileInfoMutation} = dashboardApi;
