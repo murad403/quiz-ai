@@ -27,7 +27,7 @@ const RecentQuizzes = ({ recentQuizzes }: { recentQuizzes: TRecentQuizzes[] }) =
                                     <p>•</p>
                                     <p>{quiz?.submissions_count} submissions</p>
                                     <p>•</p>
-                                    <p>Created {quiz?.created_at?.slice(0, 10)}</p>
+                                    <p>Created {new Date(quiz?.created_at).toLocaleDateString()}</p>
                                 </div>
                             </div>
                             <div className='flex items-center gap-3'>

@@ -37,3 +37,34 @@ export type TOverviewStats = {
     average_score: number,
     score_change: number
 }
+
+export type TQuiz = {
+    id: number;
+    title: string;
+    questions_count: number;
+    submissions_count: number;
+    average_score: number;
+    created_at: string;
+}
+
+export type TQuizDetailsStats = {
+    total_submissions: number;
+    average_score: number;
+    completion_rate: number;
+}
+
+export type TQuestionAnalytics = {
+    id: number;
+    question_text: string;
+    total_attempts: number;
+    percentage_correct: number;
+}
+
+export type TSubmission = {
+    id: number,
+    student_name: string;
+    email: string;
+    date: string;
+    score_percentage: number;
+    score_fraction: string;
+}

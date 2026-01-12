@@ -61,7 +61,9 @@ const DeleteAccount = () => {
                 onClick={confirmDelete}
                 className="flex-1 bg-red-500 hover:bg-red-600 text-main font-medium px-4 py-2 rounded-lg transition-colors"
               >
-                Delete Account
+                {
+                  isLoading ? 'Deleting...' : 'Delete Account'
+                }
               </button>
             </div>
           </div>
