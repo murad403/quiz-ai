@@ -7,8 +7,16 @@ export type TAnalytics = {
 }
 
 export type TWeeklySubmission = {
-  day: string;    
-  count: number; 
+    day: string;
+    count: number;
 };
 
 export type TWeeklySubmissions = TWeeklySubmission[];
+
+
+export type TTopPerformingQuiz = {
+    id: number;
+    title: string;
+    submissions: number;
+    score_percentage: number;
+};

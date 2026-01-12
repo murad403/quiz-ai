@@ -20,8 +20,8 @@ const SignInForm = () => {
     const { register, handleSubmit, formState: { errors }, } = useForm<TInputs>({
         resolver: zodResolver(signInValidation),
         defaultValues: {
-            email: "joy91740@gmail.com",
-            password: "admin1234"
+            email: "teacher@example.com",
+            password: "password123"
         }
     })
     const [signIn, {isLoading}] = useSignInMutation();

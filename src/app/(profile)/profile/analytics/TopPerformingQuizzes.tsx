@@ -1,20 +1,19 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react'
+import { TTopPerformingQuiz } from '@/types/allTypes'
 
-const TopPerformingQuizzes = ({quizzes}: {quizzes: any[]}) => {
-  console.log(quizzes)
+const TopPerformingQuizzes = ({quizzes}: {quizzes: TTopPerformingQuiz[]}) => {
+  // console.log(quizzes)
   return (
     <div className='bg-card border border-gray-700/50 rounded-lg p-4'>
       <h2 className='text-main font-medium text-xl'>Top Performing Quizzes</h2>
       <div className='space-y-4 mt-6'>
         {
-            [0, 1, 2].map((_, index) => 
-                <div key={index} className='flex justify-between border border-gray-700/50 rounded-lg p-4'>
+            quizzes?.map((quiz: TTopPerformingQuiz) => 
+                <div key={quiz.id} className='flex justify-between border border-gray-700/50 rounded-lg p-4'>
                     <div>
-                        <h2 className='text-main text-lg font-medium mb-3'>World War II History</h2>
-                        <p className='text-sm text-title'>45 submissions</p>
+                        <h2 className='text-main text-lg font-medium mb-3'>{quiz.title}</h2>
+                        <p className='text-sm text-title'>{quiz.submissions} submissions</p>
                     </div>
-                    <h1 className='text-green-500 font-bold text-subheading'>85%</h1>
+                    <h1 className='text-green-500 font-bold text-subheading'>{quiz.score_percentage}%</h1>
                 </div>
             )
         }
