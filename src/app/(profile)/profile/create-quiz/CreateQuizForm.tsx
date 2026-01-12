@@ -3,24 +3,34 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import z from 'zod';
 import Link from 'next/link';
-import { RiLoopLeftLine } from 'react-icons/ri';
-import { MdSaveAlt } from 'react-icons/md';
-import SaveAndPublishModal from '@/components/ui/SaveAndPublishModal';
 import { quizValidation } from '@/validation/validation';
-import GeneratedQuestions from './GeneratedQuestions';
+import { useCreateQuizMutation } from '@/redux/features/dashboard/dashboard.api';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 type TInputs = z.infer<typeof quizValidation>;
 
 const CreateQuizForm = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<TInputs>({
+    const [createQuiz, { isLoading }] = useCreateQuizMutation();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<TInputs>({
         resolver: zodResolver(quizValidation),
         defaultValues: {
-            numberOfQuestions: 5
+            title: 'Cybersecurity Basics',
+            context: 'Covers malware, phishing, passwords, and safe browsing practices',
+            num_questions: 5
         }
     });
+    const router = useRouter();
 
-    const onSubmit = (data: TInputs) => {
-        console.log(data);
+    const onSubmit = async(data: TInputs) => {
+        try {
+            const result = await createQuiz(data).unwrap();
+            toast.success("Quiz created successfully!");
+            reset();
+            router.push(`/profile/create-quiz/${result.id}`);
+        } catch (error) {
+            toast.error("Failed to create quiz. Please try again.");
+        }
     };
 
     return (
@@ -42,9 +52,9 @@ const CreateQuizForm = () => {
                             <input
                                 className="w-full appearance-none px-4 py-2 border border-gray-700/70 rounded-lg focus:outline-2 outline-header text-title"
                                 placeholder="e.g. World War II, Photosynthesis, Shakespeare's Macbeth"
-                                {...register("topic")}
+                                {...register("title")}
                             />
-                            {errors.topic && <p className="text-red-500 text-sm mt-2">{errors.topic.message}</p>}
+                            {errors.title && <p className="text-red-500 text-sm mt-2">{errors.title.message}</p>}
                         </div>
 
                         {/* Context or Material Field */}
@@ -69,9 +79,9 @@ const CreateQuizForm = () => {
                             <input
                                 type="number"
                                 className="w-full appearance-none px-4 py-2 border border-gray-700/70 rounded-lg focus:outline-2 outline-header text-title"
-                                {...register("numberOfQuestions", { valueAsNumber: true })}
+                                {...register("num_questions", { valueAsNumber: true })}
                             />
-                            {errors.numberOfQuestions && <p className="text-red-500 text-sm mt-2">{errors.numberOfQuestions.message}</p>}
+                            {errors.num_questions && <p className="text-red-500 text-sm mt-2">{errors.num_questions.message}</p>}
                         </div>
 
                         {/* Action Buttons */}
@@ -88,37 +98,13 @@ const CreateQuizForm = () => {
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
                                 </svg>
-                                Generate Quiz
+                                {
+                                    isLoading ? 'Generating...' : 'Generate Quiz'
+                                }
                             </button>
                         </div>
                     </div>
                 </div>
-
-            </div>
-
-
-            <div className='max-w-6xl mx-auto mt-8'>
-                <div className='flex flex-col md:flex-row gap-4 justify-between md:items-center'>
-                    <div>
-                        <h1 className='font-semibold text-main text-heading'>Topic</h1>
-                        <p className='text-paragraph text-title'>5 questions generated</p>
-                    </div>
-                    <div className='flex items-center gap-4'>
-                        <Link className='flex gap-4 px-4 py-2 items-center border border-gray-700/50 hover:bg-header/90 rounded-lg font-medium text-main' href={"/create-quiz"}>
-                            <RiLoopLeftLine />
-                            <span>Regenerate</span>
-                        </Link>
-                        <button onClick={() => {
-                            (document.getElementById('my_modal_2') as HTMLDialogElement).showModal()
-                        }} className="text-main font-semibold px-4 w-full text-center py-2 rounded-lg bg-header hover:bg-header/90 flex items-center justify-center gap-4">
-                            <MdSaveAlt />
-                            <span>Save & Publish</span>
-                        </button>
-                    </div>
-                    <SaveAndPublishModal />
-                </div>
-
-                <GeneratedQuestions></GeneratedQuestions>
             </div>
         </div>
     );

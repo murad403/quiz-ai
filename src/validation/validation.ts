@@ -38,9 +38,9 @@ export const contactValidation = z.object({
 })
 
 export const quizValidation = z.object({
-  topic: z.string().min(1, "Quiz topic is required"),
+  title: z.string().min(1, "Quiz topic is required"),
   context: z.string().optional(),
-  numberOfQuestions: z.number().min(1, "At least 1 question is required").max(50, "Maximum 50 questions allowed")
+  num_questions: z.number().min(3, "At least 3 questions are required").max(50, "Maximum 50 questions allowed")
 });
 
 export const changePasswordValidation = z.object({

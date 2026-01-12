@@ -42,7 +42,7 @@ const SaveAndPublishModal = () => {
                 <div className="modal-action flex justify-center gap-10">
                     <form method="dialog">
                         <button className="border border-gray-700/50 py-2 px-6 rounded-lg text-main transition font-medium capitalize">
-                            Create another
+                            Cancel
                         </button>
                     </form>
                     <Link href={"/quizzes"}
