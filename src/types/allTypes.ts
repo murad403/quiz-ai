@@ -68,3 +68,15 @@ export type TSubmission = {
     score_percentage: number;
     score_fraction: string;
 }
+
+
+export type TQuizOption = {
+  id: number;
+  text: string;
+  is_correct: boolean;
+}
+export type TQuizQuestion = {
+  id: number;
+  text: string;
+  options: TQuizOption[];
+}
