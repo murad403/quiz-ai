@@ -19,7 +19,7 @@ const QuizWelcome = ({ title, description, totalQuestions, estimatedTime, onStar
 
   const onSubmit = (data: FormData) => {
     onStart(data.userName);
-    console.log(data)
+    // console.log(data)
   };
 
   return (

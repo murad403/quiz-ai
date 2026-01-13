@@ -5,7 +5,7 @@ import { IoCheckmark, IoCopyOutline } from 'react-icons/io5';
 
 const SaveAndPublishModal = ({publishId}: {publishId: string | null}) => {
     const [copied, setCopied] = useState(false);
-    const quizLink = `https://v0-quiz-app-mvp-pink.vercel.app/quiz/${publishId}`;
+    const quizLink = `http://localhost:3000/quizzes/${publishId}`;
     console.log(publishId)
 
     const handleCopyLink = async () => {
