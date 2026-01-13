@@ -10,7 +10,7 @@ import { RiLoopLeftLine } from 'react-icons/ri'
 const GeneratedQuestionsPage = () => {
     const { quizId } = useParams();
     const { data } = useGeneratedQuestionsQuery(Number(quizId));
-    console.log(data);
+    // console.log(data);
 
     return (
         <div className='max-w-6xl mx-auto'>

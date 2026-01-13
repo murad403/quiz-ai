@@ -1,8 +1,17 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+"use client"
+import { useAuth } from '@/context/AuthContext'
 import { Check } from 'lucide-react'
 import Link from 'next/link'
-import React from 'react'
+import { useRouter } from 'next/navigation'
 
 const Home = () => {
+    const { isAuth } = useAuth();
+    const router = useRouter();
+    // console.log(isAuth)
+    const handleCreatingFree = () => {
+        router.push(isAuth ? '/profile/create-quiz' : '/auth/sign-up');
+    }
     return (
         <div className='md:pt-32 pt-20 md:space-y-10 space-y-7'>
             <div className='flex justify-center items-center'>
@@ -13,13 +22,12 @@ const Home = () => {
             <h1 className='text-main md:text-[70px] text-[60px] font-bold text-center'>Create Smarter <br /> Quizzes with <span className='text-green-500'>AI</span></h1>
             <p className='text-title font-semibold md:text-heading text-subheading text-center'>Generate engaging quizzes instantly. Track student <br /> performance and gain insights to improve learning outcomes.</p>
             <div className="flex justify-center items-center gap-6">
-                <Link
-                    href="/log-in"
-
+                <button
+                    onClick={handleCreatingFree}
                     className="bg-header rounded-xl py-3 px-6 font-semibold text-white hover:bg-header/90 transition-all duration-200"
                 >
                     Start Creating Free
-                </Link>
+                </button>
                 <Link
                     href="/demo-quiz"
                     className="border border-gray-700/70 rounded-xl py-3 px-6 text-title font-semibold hover:bg-header hover:text-white transition-all duration-200"

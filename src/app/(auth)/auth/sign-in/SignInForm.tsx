@@ -20,8 +20,8 @@ const SignInForm = () => {
     const { register, handleSubmit, formState: { errors }, } = useForm<TInputs>({
         resolver: zodResolver(signInValidation),
         defaultValues: {
-            email: "teacher@example.com",
-            password: "password123"
+            email: "admin@gmail.com",
+            password: "admin"
         }
     })
     const [signIn, {isLoading}] = useSignInMutation();
@@ -30,11 +30,9 @@ const SignInForm = () => {
         try {
             const result = await signIn(data).unwrap();
             await saveToken(result.access, result.refresh);
-            // console.log(result);
             toast.success("Signed in successfully!");
             router.push("/");
         } catch (error: any) {
-            // console.log(error);
             toast.error("Failed to sign in. Please check your credentials.");
         }
     }
