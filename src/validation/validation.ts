@@ -38,9 +38,9 @@ export const contactValidation = z.object({
 })
 
 export const quizValidation = z.object({
-  title: z.string().min(1, "Quiz topic is required"),
-  context: z.string().optional(),
-  num_questions: z.number().min(3, "At least 3 questions are required").max(50, "Maximum 50 questions allowed")
+    title: z.string().min(1, "Quiz topic is required"),
+    context: z.string().optional(),
+    num_questions: z.number().min(3, "At least 3 questions are required").max(50, "Maximum 50 questions allowed")
 });
 
 export const changePasswordValidation = z.object({
@@ -53,9 +53,9 @@ export const changePasswordValidation = z.object({
 });
 
 export const personalInfoValidation = z.object({
-  name: z.string().min(1, "Full name is required"),
-  email: z.string().min(1, "Email is required").email("Please enter a valid email address"),
-  institute: z.string().min(1, "Institute name is required").optional()
+    name: z.string().min(1, "Full name is required"),
+    email: z.string().min(1, "Email is required").email("Please enter a valid email address"),
+    institute: z.string().min(1, "Institute name is required").optional()
 });
 
 
@@ -63,3 +63,15 @@ export const quizWelcomeValidation = z.object({
     student_name: z.string().min(1, "Student name is required"),
     student_email: z.string().min(1, "Student email is required").email("Please enter a valid email address")
 });
+
+
+export type TQuizOption = {
+    id: number;
+    text: string;
+}
+
+export type TQuizQuestion = {
+    id: number;
+    text: string;
+    options: TQuizOption[];
+}

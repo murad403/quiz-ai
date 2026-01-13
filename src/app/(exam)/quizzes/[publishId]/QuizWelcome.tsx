@@ -1,21 +1,42 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
-import { useQuizWelcomeQuery } from "@/redux/features/dashboard/dashboard.api";
+import { useQuizWelcomeQuery, useStartQuizMutation } from "@/redux/features/dashboard/dashboard.api";
 import { quizWelcomeValidation } from "@/validation/validation"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Clock, FileText } from "lucide-react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import z from "zod"
 
 type TInputs = z.infer<typeof quizWelcomeValidation>;
 
-const Welcome = ({publishId}: {publishId: string}) => {
+type TProps = {
+    publishId: string;
+    setStep: (step: "welcome" | "quiz" | "result") => void;
+    setQuizzes: (quizzes: any[]) => void;
+    setAttemptId: (id: number) => void;
+}
+
+const QuizWelcome = ({publishId, setStep, setQuizzes, setAttemptId}: TProps) => {
     const {data} = useQuizWelcomeQuery(publishId);
+    const [startQuiz, {isLoading}] = useStartQuizMutation();
     const { register, handleSubmit, formState: { errors },} = useForm<TInputs>({
         resolver: zodResolver(quizWelcomeValidation),
+        defaultValues: {
+            student_name: 'Md Murad',
+            student_email: 'mdmurad.dev2004@gmail.com'
+        }
     });
-    
-    const onSubmit: SubmitHandler<TInputs> = (data) =>{
-        console.log(data)
+
+    const onSubmit: SubmitHandler<TInputs> = async(data) =>{
+        try {
+            const result = await startQuiz({id: publishId, data}).unwrap();
+            setQuizzes(result?.questions);
+            setAttemptId(result?.attempt_id);
+            setStep("quiz");
+        } catch (error) {
+            toast.error("Failed to start the quiz. Please try again.");
+        }
     }
 
     return (
@@ -70,11 +91,13 @@ const Welcome = ({publishId}: {publishId: string}) => {
                     type="submit"
                     className="text-main font-semibold w-full text-center py-2 rounded-lg transition-colors bg-header hover:bg-header/90"
                 >
-                    Start Quiz
+                    {
+                        isLoading ? "Starting..." : "Start Quiz"
+                    }
                 </button>
             </form>
         </div>
     )
 }
 
-export default Welcome
+export default QuizWelcome;

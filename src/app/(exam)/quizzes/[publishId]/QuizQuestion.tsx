@@ -1,11 +1,18 @@
-import React from 'react'
+"use client";
+import { TQuizQuestion } from "@/types/allTypes";
 
-const Question = () => {
+type TProps = {
+    quizzes: TQuizQuestion[];
+    setStep: (step: "welcome" | "quiz" | "result") => void;
+}
+
+const QuizQuestion = ({quizzes, setStep}: TProps) => {
+  // console.log(quizzes);
   return (
     <div>
-      
+      quqtion
     </div>
   )
 }
 
-export default Question
+export default QuizQuestion
