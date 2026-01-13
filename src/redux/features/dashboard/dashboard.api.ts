@@ -115,7 +115,16 @@ const dashboardApi = baseApi.injectEndpoints({
                 }
             }
         }),
+        submitQuiz: builder.mutation({
+            query: (data) =>{
+                return {
+                    url: `/quizzes/submit/${data?.publishId}/`,
+                    method: 'POST',
+                    body: data?.answers
+                }
+            }
+        })
     })
 });
 
-export const {useOverviewQuery, useAnalyticsQuery, useGetProfileInfoQuery, useUpdateProfileInfoMutation, useChangePasswordMutation, useDeleteUserMutation, useQuizzesQuery, useQuizDetailsQuery, useCreateQuizMutation, useGeneratedQuestionsQuery, usePublishQuizMutation, useQuizWelcomeQuery, useStartQuizMutation} = dashboardApi;
+export const {useOverviewQuery, useAnalyticsQuery, useGetProfileInfoQuery, useUpdateProfileInfoMutation, useChangePasswordMutation, useDeleteUserMutation, useQuizzesQuery, useQuizDetailsQuery, useCreateQuizMutation, useGeneratedQuestionsQuery, usePublishQuizMutation, useQuizWelcomeQuery, useStartQuizMutation, useSubmitQuizMutation} = dashboardApi;

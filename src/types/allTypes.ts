@@ -80,3 +80,13 @@ export type TQuizQuestion = {
   text: string;
   options: TQuizOption[];
 }
+
+export type TQuizQuestionOption = {
+    id: number; 
+    text: string;
+}
+
+export type TSelectAnswer = {
+    question_id: number;
+    option_id: number;
+}

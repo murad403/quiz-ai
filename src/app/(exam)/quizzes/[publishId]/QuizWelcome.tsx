@@ -15,9 +15,10 @@ type TProps = {
     setStep: (step: "welcome" | "quiz" | "result") => void;
     setQuizzes: (quizzes: any[]) => void;
     setAttemptId: (id: number) => void;
+    setStudentName: (name: string) => void;
 }
 
-const QuizWelcome = ({publishId, setStep, setQuizzes, setAttemptId}: TProps) => {
+const QuizWelcome = ({publishId, setStep, setQuizzes, setAttemptId, setStudentName}: TProps) => {
     const {data} = useQuizWelcomeQuery(publishId);
     const [startQuiz, {isLoading}] = useStartQuizMutation();
     const { register, handleSubmit, formState: { errors },} = useForm<TInputs>({
@@ -33,6 +34,7 @@ const QuizWelcome = ({publishId, setStep, setQuizzes, setAttemptId}: TProps) => 
             const result = await startQuiz({id: publishId, data}).unwrap();
             setQuizzes(result?.questions);
             setAttemptId(result?.attempt_id);
+            setStudentName(data.student_name);
             setStep("quiz");
         } catch (error) {
             toast.error("Failed to start the quiz. Please try again.");
