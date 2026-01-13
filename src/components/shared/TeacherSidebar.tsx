@@ -18,6 +18,17 @@ const TeacherSidebar = ({ onClose }: SidebarProps) => {
         }
     }
 
+    // Check if current path matches or starts with the link href
+    const isActive = (href: string) => {
+        if (pathName === href) return true;
+        
+        // For dynamic routes like /profile/quizzes/28 or /profile/create-quiz/433
+        if (href === '/profile/quizzes' && pathName.startsWith('/profile/quizzes/')) return true;
+        if (href === '/profile/create-quiz' && pathName.startsWith('/profile/create-quiz/')) return true;
+        
+        return false;
+    }
+
     return (
         <div className='bg-card h-screen sticky top-0 border-r border-gray-700/50 py-8 flex flex-col justify-between'>
             {/* Close Button for Mobile */}
@@ -46,7 +57,7 @@ const TeacherSidebar = ({ onClose }: SidebarProps) => {
                             <li key={link.name} className='flex justify-center'>
                                 <Link 
                                     className={`flex items-center gap-2 w-full transition-colors duration-200 px-4 rounded-lg py-2 capitalize ${
-                                        pathName === link.href 
+                                        isActive(link.href)
                                             ? 'text-main font-medium bg-header' 
                                             : 'text-title hover:bg-gray-600'
                                     }`} 
