@@ -8,7 +8,7 @@ const dashboardApi = baseApi.injectEndpoints({
                     url: '/teacher/dashboard/',
                     method: 'GET'
                 }
-            }
+            },
         }),
         analytics: builder.query({
             query: () =>{
@@ -16,7 +16,8 @@ const dashboardApi = baseApi.injectEndpoints({
                     url: "/teacher/analytics/",
                     method: "GET"
                 }
-            }
+            },
+            providesTags: ["quizzes"]
         }),
         getProfileInfo: builder.query({
             query: () =>{
@@ -87,7 +88,8 @@ const dashboardApi = baseApi.injectEndpoints({
                     url: `/quizzes/quiz/${id}/`,
                     method: 'GET'
                 }
-            }
+            },
+            providesTags: ["quizzes"]
         }),
         publishQuiz: builder.mutation({
             query: (id: number) =>{
@@ -113,7 +115,8 @@ const dashboardApi = baseApi.injectEndpoints({
                     method: 'POST',
                     body: data?.data
                 }
-            }
+            },
+            invalidatesTags: ["quizzes"]
         }),
         submitQuiz: builder.mutation({
             query: (data) =>{
@@ -122,7 +125,8 @@ const dashboardApi = baseApi.injectEndpoints({
                     method: 'POST',
                     body: data?.answers
                 }
-            }
+            },
+            invalidatesTags: ["quizzes"]
         })
     })
 });
