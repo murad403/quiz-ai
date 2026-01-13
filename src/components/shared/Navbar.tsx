@@ -6,8 +6,10 @@ import { usePathname } from 'next/navigation';
 import { navLinks, TNavLink } from '@/lib/navlinks';
 import profile from "../../../public/vercel.svg";
 import Image from 'next/image';
+import { useAuth } from '@/context/AuthContext';
 
-const Navbar = ({ isAuth }: { isAuth: boolean }) => {
+const Navbar = () => {
+    const { isAuth } = useAuth();
     const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();
     const toggleMenu = () => setIsOpen(!isOpen);

@@ -3,9 +3,10 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { IoCheckmark, IoCopyOutline } from 'react-icons/io5';
 
-const SaveAndPublishModal = () => {
+const SaveAndPublishModal = ({publishId}: {publishId: string | null}) => {
     const [copied, setCopied] = useState(false);
-    const quizLink = "https://v0-quiz-app-mvp-pink.vercel.app/quiz/demo-quiz-1767506097744";
+    const quizLink = `https://v0-quiz-app-mvp-pink.vercel.app/quiz/${publishId}`;
+    console.log(publishId)
 
     const handleCopyLink = async () => {
         try {
@@ -45,7 +46,7 @@ const SaveAndPublishModal = () => {
                             Cancel
                         </button>
                     </form>
-                    <Link href={"/quizzes"}
+                    <Link href={"/profile/quizzes"}
                         className="bg-header hover:bg-header/90 rounded-lg py-2 px-6 text-main font-medium transition capitalize"
                     >
                         View all quizzes

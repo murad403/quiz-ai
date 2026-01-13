@@ -6,12 +6,11 @@ import { AuthProvider } from '@/context/AuthContext';
 
 const AppWrapper = async ({ children }: { children: React.ReactNode }) => {
     const accessToken = await getCurrentToken();
-    const isAuth = !!accessToken;
     // console.log(isAuth)
     return (
         <AuthProvider accessToken={accessToken?.accessToken} refreshToken={accessToken?.refreshToken}>
             <div className='container mx-auto'>
-                <Navbar isAuth={isAuth}></Navbar>
+                <Navbar></Navbar>
             </div>
             {children}
             <Footer></Footer>
