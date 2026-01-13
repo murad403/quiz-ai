@@ -1,4 +1,3 @@
-import { use } from 'react';
 import baseApi from "@/redux/api/baseApi";
 
 const dashboardApi = baseApi.injectEndpoints({
@@ -99,7 +98,15 @@ const dashboardApi = baseApi.injectEndpoints({
             },
             invalidatesTags: ["quizzes"]
         }),
+        quizWelcome: builder.query({
+            query: (id: string) =>{
+                return {
+                    url: `/quizzes/public/info/${id}/`,
+                    method: 'GET'
+                }
+            }
+        })
     })
 });
 
-export const {useOverviewQuery, useAnalyticsQuery, useGetProfileInfoQuery, useUpdateProfileInfoMutation, useChangePasswordMutation, useDeleteUserMutation, useQuizzesQuery, useQuizDetailsQuery, useCreateQuizMutation, useGeneratedQuestionsQuery, usePublishQuizMutation} = dashboardApi;
+export const {useOverviewQuery, useAnalyticsQuery, useGetProfileInfoQuery, useUpdateProfileInfoMutation, useChangePasswordMutation, useDeleteUserMutation, useQuizzesQuery, useQuizDetailsQuery, useCreateQuizMutation, useGeneratedQuestionsQuery, usePublishQuizMutation, useQuizWelcomeQuery} = dashboardApi;

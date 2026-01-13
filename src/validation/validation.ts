@@ -57,3 +57,9 @@ export const personalInfoValidation = z.object({
   email: z.string().min(1, "Email is required").email("Please enter a valid email address"),
   institute: z.string().min(1, "Institute name is required").optional()
 });
+
+
+export const quizWelcomeValidation = z.object({
+    student_name: z.string().min(1, "Student name is required"),
+    student_email: z.string().min(1, "Student email is required").email("Please enter a valid email address")
+});
