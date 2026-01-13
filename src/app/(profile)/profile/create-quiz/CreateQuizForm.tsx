@@ -2,7 +2,6 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import z from 'zod';
-import Link from 'next/link';
 import { quizValidation } from '@/validation/validation';
 import { useCreateQuizMutation } from '@/redux/features/dashboard/dashboard.api';
 import { toast } from 'react-toastify';
@@ -22,16 +21,18 @@ const CreateQuizForm = () => {
     });
     const router = useRouter();
 
+
     const onSubmit = async(data: TInputs) => {
         try {
             const result = await createQuiz(data).unwrap();
             toast.success("Quiz created successfully!");
-            reset();
             router.push(`/profile/create-quiz/${result.id}`);
         } catch (error) {
             toast.error("Failed to create quiz. Please try again.");
         }
     };
+
+    
 
     return (
         <div>
@@ -86,11 +87,11 @@ const CreateQuizForm = () => {
 
                         {/* Action Buttons */}
                         <div className="flex gap-4 pt-4">
-                            <Link href={"/profile"}
+                            {/* <button onClick={handleCancel}
                                 className="text-main font-semibold w-full text-center py-2 rounded-lg border border-gray-700/50 hover:bg-header/90"
                             >
                                 Cancel
-                            </Link>
+                            </button> */}
                             <button
                                 onClick={handleSubmit(onSubmit)}
                                 className="text-main font-semibold w-full text-center py-2 rounded-lg bg-header hover:bg-header/90 flex items-center justify-center gap-4"

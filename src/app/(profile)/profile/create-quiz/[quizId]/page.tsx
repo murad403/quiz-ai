@@ -11,7 +11,7 @@ const GeneratedQuestionsPage = () => {
     const { quizId } = useParams();
     //    console.log(quizId);
     const { data } = useGeneratedQuestionsQuery(Number(quizId));
-    // console.log(data);
+    console.log(data);
     return (
         <div className='max-w-6xl mx-auto'>
             <div className='flex flex-col md:flex-row gap-4 justify-between md:items-center'>
@@ -59,7 +59,7 @@ const GeneratedQuestionsPage = () => {
                                         return (
                                             <div key={option.id} className="flex items-center gap-2">
                                                 <p className='flex-1 px-4 py-2 space-x-2 border border-gray-700/50 rounded-lg text-main'>
-                                                    <span>{letter}.</span>
+                                                    {/* <span>{letter}.</span> */}
                                                     <span>{option.text}</span>
                                                 </p>
                                                 {
