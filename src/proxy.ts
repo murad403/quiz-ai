@@ -43,6 +43,13 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/auth/:path*"
+    "/auth/:path*",
+    "/profile",
+    "/profile/quizzes",
+    "/profile/create-quiz",
+    "/profile/analytics",
+    "/profile/settings",
+    "/profile/create-quiz/:path*",
+    "/profile/quizzes/:path*",
   ],
 }
