@@ -77,14 +77,14 @@ const SignInForm = () => {
                             className="absolute inset-y-0 right-0 flex items-center pr-4 text-header hover:text-header/80"
                             aria-label={showPassword ? "Hide password" : "Show password"}
                         >
-                            {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                            {showPassword ? <EyeOff className='text-header' size={18} /> : <Eye className='text-header' size={18} />}
                         </button>
                     </div>
                     {errors.password && <p className="text-red-500 text-sm mt-2">{errors.password.message}</p>}
                 </div>
 
                 <div className="flex justify-end">
-                    <Link href={"/auth/forgot-password"} className="text-green-500 text-sm hover:underline underline-offset-2">
+                    <Link href={"/auth/forgot-password"} className="text-header text-sm hover:underline underline-offset-2">
                         Forgot password?
                     </Link>
                 </div>
@@ -101,7 +101,7 @@ const SignInForm = () => {
 
             <p className="text-center text-sm">
                 <span className="text-title">{`Don't`} have an account? </span>
-                <Link href={"/auth/sign-up"} className="text-green-500">Sign up</Link>
+                <Link href={"/auth/sign-up"} className="text-header">Sign up</Link>
             </p>
         </div>
     )

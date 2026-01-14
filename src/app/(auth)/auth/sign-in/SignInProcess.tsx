@@ -5,7 +5,7 @@ const SignInProcess = () => {
         <div className="bg-card md:h-screen p-4 rounded-xl md:rounded-none md:p-0 md:border-l border-gray-700/50 w-full md:w-1/2 flex flex-col justify-center items-center">
             <div className="w-full md:w-1/2">
                 <div>
-                    <p className='text-sm py-1 px-5 bg-white/10 rounded-2xl text-green-500 inline-block'>
+                    <p className='text-sm py-1 px-5 bg-white/10 rounded-2xl text-header inline-block'>
                         <span>For Educators</span>
                     </p>
                     <h1 className="font-semibold text-[40px] text-main">Create engaging quizzes in minutes</h1>
@@ -13,7 +13,7 @@ const SignInProcess = () => {
                 </div>
                 <div className="mt-7 space-y-3">
                     <div className="flex items-center gap-3">
-                        <h1 className='size-10 bg-green-500/10 flex justify-center items-center p-3 text-green-500 rounded-xl'>
+                        <h1 className='size-10 bg-green-500/10 flex justify-center items-center p-3 text-header rounded-xl'>
                             <Check size={19} className='text-header' />
                         </h1>
                         <div>
@@ -22,7 +22,7 @@ const SignInProcess = () => {
                         </div>
                     </div>
                     <div className="flex items-center gap-3">
-                        <h1 className='size-10 bg-green-500/10 flex justify-center items-center p-3 text-green-500 rounded-xl'>
+                        <h1 className='size-10 bg-green-500/10 flex justify-center items-center p-3 text-header rounded-xl'>
                             <Check size={19} className='text-header' />
                         </h1>
                         <div>
@@ -31,7 +31,7 @@ const SignInProcess = () => {
                         </div>
                     </div>
                     <div className="flex items-center gap-3">
-                        <h1 className='size-10 bg-green-500/10 flex justify-center items-center p-3 text-green-500 rounded-xl'>
+                        <h1 className='size-10 bg-green-500/10 flex justify-center items-center p-3 text-header rounded-xl'>
                             <Check size={19} className='text-header' />
                         </h1>
                         <div>
