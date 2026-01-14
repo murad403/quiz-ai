@@ -18,7 +18,7 @@ const Footer = () => {
                             </Link>
                         </li>
                         <li className='list-none'>
-                            <Link className='text-title hover:text-main text-small' href="#features">
+                            <Link className='text-title hover:text-main text-small' href="/demo-quiz">
                                 Demo
                             </Link>
                         </li>

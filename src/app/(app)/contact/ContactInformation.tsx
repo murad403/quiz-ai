@@ -12,7 +12,7 @@ const ContactInformation = () => {
                 {
                     contactInfo.map((item: TContact) =>
                         <div className='flex gap-4 items-center' key={item.id}>
-                            <h1 className='size-12 bg-green-500/10 flex justify-center items-center p-3 text-green-500 rounded-xl'>
+                            <h1 className='size-12 bg-header/10 flex justify-center items-center p-3 text-header rounded-xl'>
                                 {item.icon && <item.icon className='text-header' size={22}/>}
                             </h1>
                             <div>
