@@ -55,7 +55,7 @@ const Navbar = () => {
                 {
                     isAuth ?
                         <Link href={"/profile"} className="hidden md:block gap-6">
-                            <Image width={500} height={500} src={profile} className='size-12 rounded-full border border-green-500' alt='profile'/>
+                            <Image width={500} height={500} src={profile} className='size-12 rounded-full border border-header' alt='profile'/>
                         </Link>
                         :
                         <div className="hidden md:flex items-center gap-6">

@@ -23,7 +23,7 @@ const SubmissionAndAnalytics = ({ submissions, questionAnalytics }: { submission
                                 <div key={submission?.id} className="mt-4">
                                     <div className="p-4 border border-gray-700/50 hover:bg-gray-700/50 rounded-lg flex justify-between items-center">
                                         <div className="flex items-center gap-3">
-                                            <div className='text-xl size-14 flex justify-center items-center bg-green-500/10 p-3 text-green-500 rounded-full'>
+                                            <div className='text-xl size-12 flex justify-center items-center bg-green-500/10 p-3 text-header rounded-full'>
                                                 AJ
                                             </div>
                                             <div className="text-main">
@@ -34,7 +34,7 @@ const SubmissionAndAnalytics = ({ submissions, questionAnalytics }: { submission
                                         <div className="flex items-center gap-8">
                                             <div>
                                                 <p className="text-title text-sm">Score</p>
-                                                <h2 className="text-subheading font-medium text-main">{submission?.score_percentage}%</h2>
+                                                <h2 className="text-subheading font-medium text-main">{submission?.score_percentage.toFixed(0)}%</h2>
                                             </div>
                                             <div>
                                                 <p className="text-title text-sm">Correct</p>

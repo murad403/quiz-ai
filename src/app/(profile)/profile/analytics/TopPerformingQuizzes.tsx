@@ -13,7 +13,7 @@ const TopPerformingQuizzes = ({quizzes}: {quizzes: TTopPerformingQuiz[]}) => {
                         <h2 className='text-main text-lg font-medium mb-3'>{quiz.title}</h2>
                         <p className='text-sm text-title'>{quiz.submissions} submissions</p>
                     </div>
-                    <h1 className='text-green-500 font-bold text-subheading'>{quiz.score_percentage}%</h1>
+                    <h1 className='text-header font-bold text-subheading'>{quiz.score_percentage}%</h1>
                 </div>
             )
         }

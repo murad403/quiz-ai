@@ -55,7 +55,7 @@ const ChangePassword = () => {
                             className="absolute inset-y-0 right-0 flex items-center pr-4 text-header hover:text-header/80"
                             aria-label={showCurrentPassword ? "Hide password" : "Show password"}
                         >
-                            {showCurrentPassword ? <Eye size={18} /> : <EyeOff size={18} />}
+                            {showCurrentPassword ? <Eye className='text-header' size={18} /> : <EyeOff className='text-header' size={18} />}
                         </button>
                     </div>
                     {errors.current_password && <p className="text-red-500 text-sm mt-2">{errors.current_password.message}</p>}
@@ -79,7 +79,7 @@ const ChangePassword = () => {
                             className="absolute inset-y-0 right-0 flex items-center pr-4 text-header hover:text-header/80"
                             aria-label={showNewPassword ? "Hide password" : "Show password"}
                         >
-                            {showNewPassword ? <Eye size={18} /> : <EyeOff size={18} />}
+                            {showNewPassword ? <Eye className='text-header' size={18} /> : <EyeOff className='text-header' size={18} />}
                         </button>
                     </div>
                     {errors.new_password && <p className="text-red-500 text-sm mt-2">{errors.new_password.message}</p>}
@@ -103,7 +103,7 @@ const ChangePassword = () => {
                             className="absolute inset-y-0 right-0 flex items-center pr-4 text-header hover:text-header/80"
                             aria-label={showConfirmPassword ? "Hide password" : "Show password"}
                         >
-                            {showConfirmPassword ? <Eye size={18} /> : <EyeOff size={18} />}
+                            {showConfirmPassword ? <Eye className='text-header' size={18} /> : <EyeOff className='text-header' size={18} />}
                         </button>
                     </div>
                     {errors.confirm_password && <p className="text-red-500 text-sm mt-2">{errors.confirm_password.message}</p>}
