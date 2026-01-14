@@ -15,11 +15,11 @@ const Home = () => {
     return (
         <div className='md:pt-32 pt-20 md:space-y-10 space-y-7'>
             <div className='flex justify-center items-center'>
-                <p className='text-sm py-1 px-5 bg-white/10 rounded-2xl text-green-500 inline-block'>
+                <p className='text-sm py-1 px-5 bg-white/10 rounded-2xl text-header inline-block'>
                     <span>AI-Powered Quiz Platform</span>
                 </p>
             </div>
-            <h1 className='text-main md:text-[70px] text-[60px] font-bold text-center'>Create Smarter <br /> Quizzes with <span className='text-green-500'>AI</span></h1>
+            <h1 className='text-main md:text-[70px] text-[60px] font-bold text-center'>Create Smarter <br /> Quizzes with <span className='text-header'>AI</span></h1>
             <p className='text-title font-semibold md:text-heading text-subheading text-center'>Generate engaging quizzes instantly. Track student <br /> performance and gain insights to improve learning outcomes.</p>
             <div className="flex justify-center items-center gap-6">
                 <button

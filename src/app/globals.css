@@ -2,10 +2,10 @@
 @plugin "daisyui"; 
 
 @theme{
-  --color-header: #008000;
-  --color-title: #ADADAD;
+  --color-header: oklch(0.72 0.19 160);
+  --color-title: oklch(0.65 0 0);
   --color-main: #FFFFFF;
-  --color-card: #0f0f0f;
+  --color-card: oklch(0.16 0 0);
 
   --text-heading: 30px;
   --text-subheading: 22px;

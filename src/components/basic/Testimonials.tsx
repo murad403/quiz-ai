@@ -12,7 +12,7 @@ const Testimonials = () => {
                         {/* Stars */}
                         <div className="flex gap-1">
                             {[...Array(testimonial.rating)].map((_, i) => (
-                                <span key={i} className="text-green-500 text-xl">★</span>
+                                <span key={i} className="text-header text-xl">★</span>
                             ))}
                         </div>
 
@@ -23,7 +23,7 @@ const Testimonials = () => {
 
                         {/* Author */}
                         <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-main font-semibold">
+                            <div className="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center text-header font-semibold">
                                 {testimonial.initials}
                             </div>
                             <div>

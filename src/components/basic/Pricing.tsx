@@ -16,7 +16,7 @@ const Pricing = () => {
         <div className='flex justify-center items-center gap-5'>
           {
             tags.map((tag: string, index: number) =>
-              <button onClick={() => setActiveTag(tag)} className={` capitalize font-semibold px-5 py-2 rounded-lg ${tag === activeTag ? "bg-green-500 text-gray-900" : "text-main"}`} key={index}>{tag == "yearly" ? <p className='flex items-center gap-2'>{tag} <span className='text-[12px] bg-white/10 rounded-xl px-4 py-1'>save 17%</span></p> : tag}</button>
+              <button onClick={() => setActiveTag(tag)} className={` capitalize font-semibold px-5 py-2 rounded-lg ${tag === activeTag ? "bg-header text-gray-900" : "text-main"}`} key={index}>{tag == "yearly" ? <p className='flex items-center gap-2'>{tag} <span className='text-[12px] bg-white/10 rounded-xl px-4 py-1'>save 17%</span></p> : tag}</button>
             )
           }
         </div>

@@ -9,7 +9,7 @@ const Features = () => {
         {
             features.map((feature: TFeature, index: number) =>
                 <div className='p-7 bg-card rounded-xl space-y-5 border border-gray-700/50 hover:border-header' key={index}>
-                    <div className='text-2xl bg-green-500/10 inline-block p-3 text-green-500 rounded-xl'>
+                    <div className='text-2xl bg-green-500/10 inline-block p-3 text-header rounded-xl'>
                         {feature.icon && <feature.icon/>}
                     </div>
                     <h3 className='text-main text-subheading font-semibold'>{feature.title}</h3>
