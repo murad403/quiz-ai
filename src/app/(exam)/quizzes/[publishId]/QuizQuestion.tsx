@@ -92,7 +92,7 @@ const QuizQuestion = ({
                     }`}
                   >
                     {selectedAnswer === option.id && (
-                      <div className="size-2 rounded-full bg-green-500" />
+                      <div className="size-2 rounded-full bg-header" />
                     )}
                   </div>
                   <span className="text-white text-paragraph">{option.text}</span>

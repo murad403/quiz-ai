@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 
 type QuizStep = "welcome" | "rules" | "quiz" | "result";
 
-const QUESTION_TIME_LIMIT = 10; // seconds per question
+const QUESTION_TIME_LIMIT = 20; // seconds per question
 
 const MainPage = () => {
     const { publishId } = useParams();
@@ -183,7 +183,7 @@ const MainPage = () => {
             // If question was answered before, give 5 seconds to change answer
             // Otherwise give full 10 seconds
             // eslint-disable-next-line react-hooks/set-state-in-effect
-            setTimeRemaining(hasAnswer ? 5 : QUESTION_TIME_LIMIT);
+            setTimeRemaining(hasAnswer ? 10 : QUESTION_TIME_LIMIT);
         }
     }, [currentQuestionIndex, step, isQuizLocked, answers, quizzes]);
 
