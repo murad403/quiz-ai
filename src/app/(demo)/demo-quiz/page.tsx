@@ -10,7 +10,7 @@ import { TUserAnswer } from "@/types/quiz";
 
 type QuizStep = "welcome" | "rules" | "quiz" | "result";
 
-const QUESTION_TIME_LIMIT = 120; // seconds per question
+const QUESTION_TIME_LIMIT = 20;
 
 const DemoQuiz = () => {
   const [step, setStep] = useState<QuizStep>("welcome");

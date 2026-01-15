@@ -1,5 +1,4 @@
 "use client";
-import { Clock } from "lucide-react";
 
 interface QuizRulesProps {
   questionTimeLimit: number;
@@ -28,7 +27,7 @@ const QuizRules = ({ questionTimeLimit, onAcceptRules, onBack }: QuizRulesProps)
           <div className="space-y-4">
             {/* Rule 1 */}
             <div className="flex gap-3">
-              <div className="flex-shrink-0">
+              <div className="shrink-0">
                 <div className="flex items-center justify-center h-7 w-7 rounded-full bg-header text-black text-sm font-semibold">
                   1
                 </div>
@@ -43,7 +42,7 @@ const QuizRules = ({ questionTimeLimit, onAcceptRules, onBack }: QuizRulesProps)
 
             {/* Rule 2 */}
             <div className="flex gap-3">
-              <div className="flex-shrink-0">
+              <div className="shrink-0">
                 <div className="flex items-center justify-center h-7 w-7 rounded-full bg-header text-black text-sm font-semibold">
                   2
                 </div>
@@ -58,7 +57,7 @@ const QuizRules = ({ questionTimeLimit, onAcceptRules, onBack }: QuizRulesProps)
 
             {/* Rule 3 */}
             <div className="flex gap-3">
-              <div className="flex-shrink-0">
+              <div className="shrink-0">
                 <div className="flex items-center justify-center h-7 w-7 rounded-full bg-header text-black text-sm font-semibold">
                   3
                 </div>
@@ -73,7 +72,7 @@ const QuizRules = ({ questionTimeLimit, onAcceptRules, onBack }: QuizRulesProps)
 
             {/* Rule 4 */}
             <div className="flex gap-3">
-              <div className="flex-shrink-0">
+              <div className="shrink-0">
                 <div className="flex items-center justify-center h-7 w-7 rounded-full bg-header text-black text-sm font-semibold">
                   4
                 </div>
@@ -88,7 +87,7 @@ const QuizRules = ({ questionTimeLimit, onAcceptRules, onBack }: QuizRulesProps)
 
             {/* Rule 5 */}
             <div className="flex gap-3">
-              <div className="flex-shrink-0">
+              <div className="shrink-0">
                 <div className="flex items-center justify-center h-7 w-7 rounded-full bg-header text-black text-sm font-semibold">
                   5
                 </div>
@@ -103,7 +102,7 @@ const QuizRules = ({ questionTimeLimit, onAcceptRules, onBack }: QuizRulesProps)
 
             {/* Rule 6 */}
             <div className="flex gap-3">
-              <div className="flex-shrink-0">
+              <div className="shrink-0">
                 <div className="flex items-center justify-center h-7 w-7 rounded-full bg-header text-black text-sm font-semibold">
                   6
                 </div>
@@ -118,7 +117,7 @@ const QuizRules = ({ questionTimeLimit, onAcceptRules, onBack }: QuizRulesProps)
 
             {/* Rule 7 */}
             <div className="flex gap-3">
-              <div className="flex-shrink-0">
+              <div className="shrink-0">
                 <div className="flex items-center justify-center h-7 w-7 rounded-full bg-header text-black text-sm font-semibold">
                   7
                 </div>
