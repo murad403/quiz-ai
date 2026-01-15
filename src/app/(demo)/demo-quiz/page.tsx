@@ -158,6 +158,14 @@ const DemoQuiz = () => {
 
     setTimeRemaining(QUESTION_TIME_LIMIT);
 
+    const handleTimeExpired = () => {
+      if (currentQuestionIndex < quizData.questions.length - 1) {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+      } else {
+        setStep("result");
+      }
+    };
+
     timerIntervalRef.current = setInterval(() => {
       setTimeRemaining((prev) => {
         if (prev <= 1) {
@@ -172,14 +180,6 @@ const DemoQuiz = () => {
       if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
     };
   }, [step, currentQuestionIndex, isQuizLocked]);
-
-  const handleTimeExpired = () => {
-    if (currentQuestionIndex < quizData.questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-    } else {
-      setStep("result");
-    }
-  };
 
   const handleStart = (name: string) => {
     setUserName(name);
