@@ -12,7 +12,7 @@ type TInputs = z.infer<typeof quizWelcomeValidation>;
 
 type TProps = {
     publishId: string;
-    setStep: (step: "welcome" | "quiz" | "result") => void;
+    setStep: (step: "welcome" | "rules" | "quiz" | "result") => void;
     setQuizzes: (quizzes: any[]) => void;
     setAttemptId: (id: number) => void;
     setStudentName: (name: string) => void;
@@ -35,7 +35,7 @@ const QuizWelcome = ({publishId, setStep, setQuizzes, setAttemptId, setStudentNa
             setQuizzes(result?.questions);
             setAttemptId(result?.attempt_id);
             setStudentName(data.student_name);
-            setStep("quiz");
+            setStep("rules");
         } catch (error) {
             toast.error("Failed to start the quiz. Please try again.");
         }
@@ -94,7 +94,7 @@ const QuizWelcome = ({publishId, setStep, setQuizzes, setAttemptId, setStudentNa
                     className="text-main font-semibold w-full text-center py-2 rounded-lg transition-colors bg-header hover:bg-header/90"
                 >
                     {
-                        isLoading ? "Starting..." : "Start Quiz"
+                        isLoading ? "Starting..." : "Continue to Rules"
                     }
                 </button>
             </form>
