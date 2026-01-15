@@ -28,6 +28,7 @@ const MainPage = () => {
     const [isQuizLocked, setIsQuizLocked] = useState(false);
     const [showWarning, setShowWarning] = useState(false);
     const [warningMessage, setWarningMessage] = useState("");
+    const [timedOutQuestions, setTimedOutQuestions] = useState<number[]>([]); // Track questions that timed out
     const [submitQuiz, { isLoading: isSubmitting }] = useSubmitQuizMutation();
 
     const timerIntervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -175,10 +176,16 @@ const MainPage = () => {
     // Reset timer when question changes
     useEffect(() => {
         if (step === "quiz" && !isQuizLocked) {
+            // Check if current question was answered (not timed out)
+            const currentQuestion = quizzes[currentQuestionIndex];
+            const hasAnswer = answers.some((a) => a.question_id === currentQuestion?.id);
+            
+            // If question was answered before, give 5 seconds to change answer
+            // Otherwise give full 10 seconds
             // eslint-disable-next-line react-hooks/set-state-in-effect
-            setTimeRemaining(QUESTION_TIME_LIMIT);
+            setTimeRemaining(hasAnswer ? 5 : QUESTION_TIME_LIMIT);
         }
-    }, [currentQuestionIndex, step, isQuizLocked]);
+    }, [currentQuestionIndex, step, isQuizLocked, answers, quizzes]);
 
     // Timer functionality
     useEffect(() => {
@@ -188,6 +195,9 @@ const MainPage = () => {
         }
 
         const handleTimeExpired = () => {
+            // Mark current question as timed out
+            setTimedOutQuestions(prev => [...prev, currentQuestionIndex]);
+            
             if (currentQuestionIndex < quizzes.length - 1) {
                 setCurrentQuestionIndex(currentQuestionIndex + 1);
             } else {
@@ -218,6 +228,7 @@ const MainPage = () => {
         setTimeRemaining(QUESTION_TIME_LIMIT);
         setViolationCount(0);
         setIsQuizLocked(false);
+        setTimedOutQuestions([]);
     };
 
     const handleBackToWelcome = () => {
@@ -248,7 +259,7 @@ const MainPage = () => {
     const handleNext = () => {
         if (currentQuestionIndex < quizzes.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
-            setTimeRemaining(QUESTION_TIME_LIMIT);
+            // Timer will be set by useEffect based on whether next question has answer
         } else {
             handleSubmitQuiz();
         }
@@ -256,8 +267,16 @@ const MainPage = () => {
 
     const handlePrevious = () => {
         if (currentQuestionIndex > 0) {
-            setCurrentQuestionIndex(currentQuestionIndex - 1);
-            setTimeRemaining(QUESTION_TIME_LIMIT);
+            const prevIndex = currentQuestionIndex - 1;
+            
+            // Check if previous question timed out
+            if (timedOutQuestions.includes(prevIndex)) {
+                toast.warning("Cannot go back to a timed-out question!");
+                return;
+            }
+            
+            setCurrentQuestionIndex(prevIndex);
+            // Timer will be set by useEffect (5 seconds if answered, 10 if not)
         }
     };
 
