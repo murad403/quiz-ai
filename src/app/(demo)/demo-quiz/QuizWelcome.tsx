@@ -12,6 +12,7 @@ interface QuizWelcomeProps {
 
 interface FormData {
   userName: string;
+  email: string;
 }
 
 const QuizWelcome = ({ title, description, totalQuestions, estimatedTime, onStart}: QuizWelcomeProps) => {
@@ -19,6 +20,7 @@ const QuizWelcome = ({ title, description, totalQuestions, estimatedTime, onStar
 
   const onSubmit = (data: FormData) => {
     onStart(data.userName);
+    onStart(data.email);
     // console.log(data)
   };
 
@@ -63,12 +65,32 @@ const QuizWelcome = ({ title, description, totalQuestions, estimatedTime, onStar
               <p className="mt-2 text-sm text-red-500">{errors.userName.message}</p>
             )}
           </div>
-
+            <div className="mb-6">
+            <label htmlFor="userName" className="text-main font-semibold text-paragraph block mb-2">
+              Your Email
+            </label>
+            <input
+              id="userEmail"
+              type="text"
+              {...register("email", {
+                required: "Email is required",
+                minLength: {
+                  value: 2,
+                  message: "Email is required",
+                },
+              })}
+              className="w-full appearance-none px-4 py-2 border border-gray-700/70 rounded-lg focus:outline-2 outline-header text-title"
+              placeholder="Enter your email"
+            />
+            {errors.email && (
+              <p className="mt-2 text-sm text-red-500">{errors.email.message}</p>
+            )}
+          </div>
           <button
             type="submit"
              className="text-main font-semibold w-full text-center py-2 rounded-lg transition-colors bg-header hover:bg-header/90"
           >
-            Start Quiz
+            Continue to Rules
           </button>
         </form>
       </div>

@@ -11,9 +11,10 @@ interface QuizQuestionProps {
   onPrevious: () => void;
   isFirstQuestion: boolean;
   isLastQuestion: boolean;
+  timeRemaining?: number;
 }
 
-const QuizQuestion = ({ question, currentIndex, totalQuestions, selectedAnswer, onAnswerSelect, onNext, onPrevious, isFirstQuestion, isLastQuestion}: QuizQuestionProps) => {
+const QuizQuestion = ({ question, currentIndex, totalQuestions, selectedAnswer, onAnswerSelect, onNext, onPrevious, isFirstQuestion, isLastQuestion, timeRemaining}: QuizQuestionProps) => {
 
   const handleOptionClick = (option: string) => {
     onAnswerSelect(option);
@@ -21,20 +22,34 @@ const QuizQuestion = ({ question, currentIndex, totalQuestions, selectedAnswer, 
 
   const progress = ((currentIndex + 1) / totalQuestions) * 100;
 
+  // Format time remaining
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  };
+
   return (
     <div>
       <div className="w-full space-y-5">
         {/* Progress Section */}
-        <div>
-          <p className="text-title text-small mb-2">
-            Question {currentIndex + 1} of {totalQuestions}
-          </p>
-          <div className="w-full bg-neutral-800 rounded-full h-2">
-            <div
-              className="bg-header h-2 rounded-full transition-all duration-300"
-              style={{ width: `${progress}%` }}
-            />
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex-1">
+            <p className="text-title text-small mb-2">
+              Question {currentIndex + 1} of {totalQuestions}
+            </p>
+            <div className="w-full bg-neutral-800 rounded-full h-2">
+              <div
+                className="bg-header h-2 rounded-full transition-all duration-300"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
           </div>
+          {timeRemaining !== undefined && (
+            <div className={`text-sm font-semibold px-4 py-2 rounded-lg border ${timeRemaining < 10 ? 'text-red-500 border-red-500/50 bg-red-500/10' : 'text-main border-gray-700/50 bg-neutral-800'}`}>
+              {formatTime(timeRemaining)}
+            </div>
+          )}
         </div>
 
         {/* Question Card */}
