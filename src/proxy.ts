@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { clearTokens, getCurrentToken } from "./utils/auth";
+import jwt from "jsonwebtoken";
 
 const SIGN_IN_URL = "/auth/sign-in";
 const PROFILE_URL = "/";
@@ -24,6 +25,11 @@ export async function proxy(request: NextRequest) {
     const {accessToken, refreshToken} = await getCurrentToken();
     const { pathname } = request.nextUrl; 
     const isAuthPage = pathname.startsWith("/auth");
+
+    if(refreshToken){
+        const info = await jwt.decode(refreshToken);
+        // console.log("Refresh Token Info:", info?.user_id);
+    }
 
     if (refreshToken && isTokenExpired(refreshToken)) {
         await clearTokens();
