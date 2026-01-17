@@ -32,7 +32,7 @@ const ProfileWrapper = ({ children }: { children: React.ReactNode }) => {
             {/* Main Content */}
             <div className='space-y-4 w-full px-4'>
                 <TeacherHeader onMenuClick={() => setIsSidebarOpen(true)} />
-                <div>
+                <div className='mt-4'>
                     {children}
                 </div>
             </div>

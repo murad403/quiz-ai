@@ -8,7 +8,7 @@ interface HeaderProps {
 
 const TeacherHeader = ({ onMenuClick }: HeaderProps) => {
     return (
-        <div className='mt-4 bg-card border border-gray-700/50 p-4 rounded-lg flex items-center gap-4'>
+        <div className='mt-4 bg-card border border-gray-700/50 rounded-lg flex justify-between md:hidden p-4 items-center gap-4'>
             {/* Menu Button - Only visible on mobile */}
             <button 
                 onClick={onMenuClick}
@@ -18,9 +18,9 @@ const TeacherHeader = ({ onMenuClick }: HeaderProps) => {
                 <HiMenu size={24} />
             </button>
             
-            <div className='flex-1'>
+            <div className='md:hidden block'>
                 {/* Your header content here */}
-                <span className='text-main font-semibold text-subheading'>Dashboard</span>
+                <span className='text-main font-semibold text-subheading'>Quiz Ai</span>
             </div>
         </div>
     )
